@@ -113,6 +113,7 @@
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="handlers.cpp" />
     <ClCompile Include="init.cpp" />
+    <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="display.cpp" />
   </ItemGroup>
@@ -122,6 +123,14 @@
     <ClInclude Include="display.h" />
     <ClInclude Include="handlers.h" />
     <ClInclude Include="init.h" />
+    <ClInclude Include="keyboard.h" />
+    <ClInclude Include="loadBMP.h" />
+    <ClInclude Include="loadTGA.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="TexturesCom_ConcreteBare0433_11_seamless_S.tga">
+      <DeploymentContent>true</DeploymentContent>
+    </Image>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
