@@ -17,7 +17,7 @@ void render()
 	glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 	glScalef(100, 1, 100);
 	glTranslatef(-0.5, 1, -0.5);
-	concreteFloor(100, 10);
+	concreteFloor(100, 3);
 	//update screen
 	glutSwapBuffers();
 }

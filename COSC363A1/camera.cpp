@@ -24,7 +24,7 @@ void cameraMatrix()
 /*
 set current camera target
 */
-void camSetTargetv(float point[3], bool snap, bool relative)
+void camSetTarget(float point[3], bool snap, bool relative)
 {
 
 	if (relative)
@@ -45,7 +45,7 @@ void camSetTargetv(float point[3], bool snap, bool relative)
 /*
 set current camera position
 */
-void camSetPosv(float point[3], bool snap, bool relative)
+void camSetPos(float point[3], bool snap, bool relative)
 {
 	if (relative)
 	{
@@ -65,7 +65,7 @@ void camSetPosv(float point[3], bool snap, bool relative)
 /*
 set current camera up vector
 */
-void camSetUpv(float vector[3], bool snap, bool relative)
+void camSetUp(float vector[3], bool snap, bool relative)
 {
 	if (relative)
 	{
@@ -85,18 +85,18 @@ void camSetUpv(float vector[3], bool snap, bool relative)
 void camSetTarget(float x, float y, float z, bool snap, bool relative)
 {
 	float vec[3] = { x,y,z };
-	camSetTargetv(vec, snap, relative);
+	camSetTarget(vec, snap, relative);
 }
 
 void camSetPos(float x, float y, float z, bool snap, bool relative)
 {
 	float vec[3] = { x,y,z };
-	camSetPosv(vec, snap, relative);
+	camSetPos(vec, snap, relative);
 }
 void camSetUp(float x, float y, float z, bool snap, bool relative)
 {
 	float vec[3] = { x,y,z };
-	camSetUpv(vec, snap, relative);
+	camSetUp(vec, snap, relative);
 }
 /*
 set smoothing times

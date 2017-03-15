@@ -36,6 +36,9 @@
     <ClCompile Include="keyboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="timing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -62,9 +65,15 @@
     <ClInclude Include="loadTGA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="timing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="TexturesCom_ConcreteBare0433_11_seamless_S.tga">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="TexturesCom_BrickSmallBrown0270_1_seamless_S.tga">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
