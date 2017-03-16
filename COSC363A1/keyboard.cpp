@@ -63,6 +63,7 @@ void specialReleased(int key, int x, int y)
 		return;
 	}
 	memcpy(KbdController::specials + i, KbdController::specials + i + 1, sizeof(int)*(KbdController::n_specials - (i + 1)));
+	KbdController::n_specials--;
 }
 
 void keyPressed(unsigned char key, int x, int y)
@@ -95,4 +96,5 @@ void keyReleased(unsigned char key, int x, int y)
 		return;
 	}
 	memcpy(KbdController::keys + i, KbdController::keys + i + 1, sizeof(unsigned char)*(KbdController::n_keys - (i + 1)));
+	KbdController::n_keys--;
 }
