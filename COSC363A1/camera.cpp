@@ -9,16 +9,38 @@ namespace MyCamera
 	float camSetTarget[3] = { 0,0,0 };
 	float camCurrentUp[3] = { 0,1,0 };
 	float camSetUp[3] = { 0,1,0 };
+	float camCurrentAngle[2] = {0, 0};
+	float camSetAngle[2] = {0, 0};
 	float camTargetTime = 0.0f;
 	float camPosTime = 0.0f;
 	float camUpTime = 0.0f;
+	float camVertAngleTime = 0.0f;
+	float camHrizAngleTime = 0.0f;
+	bool targetMode = true;
 }
 
 void cameraMatrix()
 {
-	gluLookAt(MyCamera::camCurrentPosition[0], MyCamera::camCurrentPosition[1], MyCamera::camCurrentPosition[2], 
-		MyCamera::camCurrentTarget[0], MyCamera::camCurrentTarget[1], MyCamera::camCurrentTarget[2], 
+	if (MyCamera::targetMode)
+	{
+		gluLookAt(MyCamera::camCurrentPosition[0], MyCamera::camCurrentPosition[1], MyCamera::camCurrentPosition[2], 
+			MyCamera::camCurrentTarget[0], MyCamera::camCurrentTarget[1], MyCamera::camCurrentTarget[2], 
+			MyCamera::camCurrentUp[0], MyCamera::camCurrentUp[1], MyCamera::camCurrentUp[2]);
+	}
+	else
+	{
+		gluLookAt(MyCamera::camCurrentPosition[0], MyCamera::camCurrentPosition[1], MyCamera::camCurrentPosition[2],
+		MyCamera::camCurrentPosition[0], MyCamera::camCurrentPosition[1], MyCamera::camCurrentPosition[2]-1,
 		MyCamera::camCurrentUp[0], MyCamera::camCurrentUp[1], MyCamera::camCurrentUp[2]);
+		glRotatef(-MyCamera::camCurrentAngle[1], 0,1,0);
+		glRotatef(MyCamera::camCurrentAngle[0], 1,0,0);
+	}
+
+}
+
+void camTargeted(bool target)
+{
+
 }
 
 /*

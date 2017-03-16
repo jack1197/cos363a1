@@ -1,6 +1,7 @@
 #include "common.h"
 #include "timing.h"
 #include "keyboard.h"
+#include "camera.h"
 #include <chrono>
 #include <iostream>
 
@@ -24,7 +25,30 @@ void frameProcesses(int number)
 	myTiming::last = now;
 	std::cout << dt << "\t"<<1./dt<<"\n";
 
-	std::cout<<isSpecialDown(GLUT_KEY_UP)<<"\n";
+	camSmoothingStep(dt);
+	cameraProcesses(dt);
+
 
 	glutPostRedisplay();
+}
+
+void cameraProcesses(float dt)
+{
+	const float unitsPerSec = 20;
+	if(isSpecialDown(GLUT_KEY_UP))
+	{
+		camSetPos(0, unitsPerSec*dt, 0, 1, 1);
+	}
+	if(isSpecialDown(GLUT_KEY_DOWN))
+	{
+		camSetPos(0, -unitsPerSec*dt, 0, 1, 1);
+	}
+	if(isSpecialDown(GLUT_KEY_LEFT))
+	{
+		camSetPos( -unitsPerSec*dt,0,  0, 1, 1);
+	}
+	if(isSpecialDown(GLUT_KEY_RIGHT))
+	{
+		camSetPos(unitsPerSec*dt,0, 0, 1, 1);
+	}
 }

@@ -34,9 +34,9 @@ bool isKeyDown(unsigned char key)
 }
 
 void specialPressed(int key, int x, int y) {
-	for (auto item : KbdController::specials)
+	for (int i=0; i<KbdController::n_specials;i++)
 	{
-		if (item == key)
+		if (KbdController::specials[i] == key)
 		{
 			return;
 		}
@@ -68,9 +68,9 @@ void specialReleased(int key, int x, int y)
 
 void keyPressed(unsigned char key, int x, int y)
 {
-	for (auto item : KbdController::keys)
+	for (int i=0; i<KbdController::n_keys;i++)
 	{
-		if (item == key)
+		if (KbdController::keys[i] == key)
 		{
 			return;
 		}
