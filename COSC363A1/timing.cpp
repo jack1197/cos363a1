@@ -23,5 +23,8 @@ void frameProcesses(int number)
 	double dt = duration_cast<duration<double>>(now - myTiming::last).count();
 	myTiming::last = now;
 	std::cout << dt << "\t"<<1./dt<<"\n";
+
+	std::cout<<isSpecialDown(GLUT_KEY_UP)<<"\n";
+
 	glutPostRedisplay();
 }
