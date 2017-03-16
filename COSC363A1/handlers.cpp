@@ -2,6 +2,9 @@
 #include "handlers.h"
 #include "camera.h"
 #include "keyboard.h"
+#include "timing.h"
+#include <iostream>
+#include <chrono>
 
 void registerHandlers()
 {
@@ -9,5 +12,5 @@ void registerHandlers()
 	glutSpecialUpFunc(specialReleased);
 	glutKeyboardFunc(keyPressed);
 	glutKeyboardUpFunc(keyReleased);
-	glutTimerFunc(1)
+	timerInit();
 }

@@ -1,6 +1,7 @@
 #include "common.h"
 #include "display.h"
 #include "camera.h"
+#include "timing.h"
 /*
 Render frame
 */
@@ -20,6 +21,7 @@ void render()
 	concreteFloor(100, 3);
 	//update screen
 	glutSwapBuffers();
+	glutTimerFunc(0, frameProcesses, 0);
 }
 
 /*
