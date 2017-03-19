@@ -8,8 +8,7 @@
 // University of Canterbury, Christchurch, New Zealand.
 //=====================================================================
 
-#if !defined(H_TGA)
-#define H_TGA
+#pragma once
 
 #include <iostream>
 #include <fstream>

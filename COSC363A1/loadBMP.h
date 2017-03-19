@@ -8,8 +8,7 @@
 // University of Canterbury, Christchurch, New Zealand.
 //=====================================================================
 
-#if !defined(H_BMP)
-#define H_BMP
+#pragma once
 
 #include <iostream>
 #include <fstream>

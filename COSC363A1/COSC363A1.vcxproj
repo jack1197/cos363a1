@@ -131,6 +131,7 @@
     <ClInclude Include="keyboard.h" />
     <ClInclude Include="loadBMP.h" />
     <ClInclude Include="loadTGA.h" />
+    <ClInclude Include="texture.h" />
     <ClInclude Include="timing.h" />
   </ItemGroup>
   <ItemGroup>
