@@ -16,6 +16,7 @@ void initialize()
 	glEnable(GL_NORMALIZE);
 
 	camSetPos(20, 20, 20);
+	camTargeted(false);
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();

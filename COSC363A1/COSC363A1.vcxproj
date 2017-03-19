@@ -119,6 +119,7 @@
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="display.cpp" />
+    <ClCompile Include="texture.cpp" />
     <ClCompile Include="timing.cpp" />
   </ItemGroup>
   <ItemGroup>

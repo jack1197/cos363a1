@@ -15,7 +15,7 @@ namespace MyCamera
 	float camPosTime = 0.0f;
 	float camUpTime = 0.0f;
 	float camVertAngleTime = 0.0f;
-	float camHrizAngleTime = 0.0f;
+	float camHorizAngleTime = 0.0f;
 	bool targetMode = true;
 }
 
@@ -29,18 +29,18 @@ void cameraMatrix()
 	}
 	else
 	{
+		glRotatef(MyCamera::camCurrentAngle[1], 1,0,0);
+		glRotatef(MyCamera::camCurrentAngle[0], 0,1,0);
 		gluLookAt(MyCamera::camCurrentPosition[0], MyCamera::camCurrentPosition[1], MyCamera::camCurrentPosition[2],
 		MyCamera::camCurrentPosition[0], MyCamera::camCurrentPosition[1], MyCamera::camCurrentPosition[2]-1,
 		MyCamera::camCurrentUp[0], MyCamera::camCurrentUp[1], MyCamera::camCurrentUp[2]);
-		glRotatef(-MyCamera::camCurrentAngle[1], 0,1,0);
-		glRotatef(MyCamera::camCurrentAngle[0], 1,0,0);
 	}
 
 }
 
 void camTargeted(bool target)
 {
-
+	MyCamera::targetMode = target;
 }
 
 /*
@@ -101,6 +101,30 @@ void camSetUp(float vector[3], bool snap, bool relative)
 	if (snap || MyCamera::camUpTime == 0.0f)
 	{
 		memcpy(MyCamera::camCurrentUp, MyCamera::camSetUp, 3 * sizeof(float));
+	}
+}
+
+void camSetAngle(float azimuth, float elevation, bool snap, bool relative)
+{
+	if (relative)
+	{
+		MyCamera::camSetAngle[0] += azimuth;
+		MyCamera::camSetAngle[1] += elevation;
+	}
+	else
+	{
+		MyCamera::camSetAngle[0] = azimuth;
+		MyCamera::camSetAngle[1] = elevation;
+	}
+	if (MyCamera::camSetAngle[1] > 90.f) MyCamera::camSetAngle[1] = 90.f;
+	if (MyCamera::camSetAngle[1] < -90.f) MyCamera::camSetAngle[1] = -90.f;
+	if (snap || MyCamera::camHorizAngleTime == 0.0f)
+	{
+		MyCamera::camCurrentAngle[0] = MyCamera::camSetAngle[0];
+	}
+	if (snap || MyCamera::camVertAngleTime == 0.0f)
+	{
+		MyCamera::camCurrentAngle[1] = MyCamera::camSetAngle[1];
 	}
 }
 
