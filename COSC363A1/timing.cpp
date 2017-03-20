@@ -90,7 +90,7 @@ void cameraProcesses(float dt)
 		multiplied[1] = 0.f;
 		camSetPos(multiplied, 1, 1);
 	}
-	if (isSpecialDown(GLUT_KEY_SHIFT_L))
+	if (isKeyDown('q'))
 	{
 		float multiplied[3];
 		multiplied[0] = -sin(angles[0] / 180.*PI) * sin(angles[1] / 180.*PI) * unitPerSec * dt;
@@ -98,7 +98,7 @@ void cameraProcesses(float dt)
 		multiplied[1] = cos(angles[1] / 180.*PI) * unitPerSec * dt;
 		camSetPos(multiplied, 1, 1);
 	}
-	if (isSpecialDown(GLUT_KEY_CTRL_L))
+	if (isKeyDown('e'))
 	{
 
 		float multiplied[3];
@@ -107,5 +107,5 @@ void cameraProcesses(float dt)
 		multiplied[1] = -cos(angles[1] / 180.*PI) * unitPerSec * dt;
 		camSetPos(multiplied, 1, 1);
 	}
-	std::cout << direction[0] << "\t" << direction[1] << "\t" << direction[2] << "\n";
+	//std::cout << direction[0] << "\t" << direction[1] << "\t" << direction[2] << "\n";
 }

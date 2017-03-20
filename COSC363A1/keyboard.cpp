@@ -38,6 +38,25 @@ bool isKeyDown(unsigned char key)
 	return 0;
 }
 
+void printSpecials()
+{
+	std::cout << (int)KbdController::n_specials << "[ ";
+	for (auto key : KbdController::specials)
+	{
+		std::cout << key << ", ";
+	}
+	std::cout << "]\n";
+}
+void printKeys()
+{
+	std::cout << (int)KbdController::n_keys << "[ ";
+	for (auto key : KbdController::keys)
+	{
+		std::cout << key << ", ";
+	}
+	std::cout << "]\n";
+}
+
 void specialPressed(int key, int x, int y) {
 	for (int i=0; i<KbdController::n_specials;i++)
 	{
@@ -51,10 +70,12 @@ void specialPressed(int key, int x, int y) {
 		return;
 	}
 	KbdController::specials[KbdController::n_specials++] = key;
+
 }
 
 void specialReleased(int key, int x, int y)
 {
+
 	int i = 0;
 	for (; i < KbdController::n_specials; i++)
 	{
@@ -69,6 +90,7 @@ void specialReleased(int key, int x, int y)
 	}
 	memcpy(KbdController::specials + i, KbdController::specials + i + 1, sizeof(int)*(KbdController::n_specials - (i + 1)));
 	KbdController::n_specials--;
+
 }
 
 
