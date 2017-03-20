@@ -76,5 +76,4 @@ void loadTGA(const char* filename)
      delete imageData;	         	         
 }
 
-#endif
 

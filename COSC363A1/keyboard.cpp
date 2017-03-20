@@ -21,6 +21,11 @@ bool isSpecialDown(int key)
 	return 0;
 }
 
+bool isKeyDown(char key)
+{
+	return isKeyDown((unsigned char)key);
+}
+
 bool isKeyDown(unsigned char key)
 {
 	for (int i = 0; i < KbdController::n_keys; i++)
@@ -65,6 +70,8 @@ void specialReleased(int key, int x, int y)
 	memcpy(KbdController::specials + i, KbdController::specials + i + 1, sizeof(int)*(KbdController::n_specials - (i + 1)));
 	KbdController::n_specials--;
 }
+
+
 
 void keyPressed(unsigned char key, int x, int y)
 {

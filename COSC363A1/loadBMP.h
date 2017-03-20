@@ -53,5 +53,4 @@ void loadBMP(const char* filename)
     delete imageData;	
 }
 
-#endif
 

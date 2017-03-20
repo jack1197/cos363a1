@@ -1,5 +1,6 @@
 #include "common.h"
 #include "camera.h"
+#include <cmath>
 
 namespace MyCamera
 {
@@ -29,7 +30,7 @@ void cameraMatrix()
 	}
 	else
 	{
-		glRotatef(MyCamera::camCurrentAngle[1], 1,0,0);
+		glRotatef(-MyCamera::camCurrentAngle[1], 1,0,0);
 		glRotatef(MyCamera::camCurrentAngle[0], 0,1,0);
 		gluLookAt(MyCamera::camCurrentPosition[0], MyCamera::camCurrentPosition[1], MyCamera::camCurrentPosition[2],
 		MyCamera::camCurrentPosition[0], MyCamera::camCurrentPosition[1], MyCamera::camCurrentPosition[2]-1,
@@ -164,3 +165,14 @@ void camSmoothingStep(float dt)
 	memcpy(MyCamera::camSetTarget, MyCamera::camCurrentTarget, 3 * sizeof(float));
 	memcpy(MyCamera::camSetUp, MyCamera::camCurrentUp, 3 * sizeof(float));
 }
+
+void camGetDirection(float output[3])
+{
+	camGetDirection(output, MyCamera::targetMode);
+}
+void camGetDirection(float output[3], bool targetMode)
+{
+	output[0] = sin(MyCamera::camSetAngle[0]/180.*PI) * cos(MyCamera::camSetAngle[1]/180.*PI);
+	output[1] = sin(MyCamera::camSetAngle[1]/180.*PI);
+	output[2] = -cos(MyCamera::camSetAngle[0]/180.*PI) * cos(MyCamera::camSetAngle[1]/180.*PI);
+	}
