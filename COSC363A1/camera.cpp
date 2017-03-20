@@ -165,11 +165,18 @@ void camSmoothingStep(float dt)
 	memcpy(MyCamera::camSetTarget, MyCamera::camCurrentTarget, 3 * sizeof(float));
 	memcpy(MyCamera::camSetUp, MyCamera::camCurrentUp, 3 * sizeof(float));
 }
+void camGetAngles(float output[2])
+{
+	output[0] = MyCamera::camSetAngle[0];
+	output[1] = MyCamera::camSetAngle[1];
+}
 
 void camGetDirection(float output[3])
 {
 	camGetDirection(output, MyCamera::targetMode);
 }
+
+
 void camGetDirection(float output[3], bool targetMode)
 {
 	output[0] = sin(MyCamera::camSetAngle[0]/180.*PI) * cos(MyCamera::camSetAngle[1]/180.*PI);

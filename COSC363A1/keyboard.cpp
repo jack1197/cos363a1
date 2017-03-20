@@ -55,7 +55,7 @@ void specialPressed(int key, int x, int y) {
 
 void specialReleased(int key, int x, int y)
 {
-	register int i = 0;
+	int i = 0;
 	for (; i < KbdController::n_specials; i++)
 	{
 		if (key == KbdController::specials[i])
@@ -90,7 +90,7 @@ void keyPressed(unsigned char key, int x, int y)
 }
 void keyReleased(unsigned char key, int x, int y)
 {
-	register int i = 0;
+	int i = 0;
 	for (; i < KbdController::n_keys; i++)
 	{
 		if (key == KbdController::keys[i])

@@ -13,4 +13,5 @@ void camSetUp(float x, float y, float z, bool snap = false, bool relative = fals
 void camSetSmoothing(float targetTime, float posTime, float upTime);
 void camGetDirection(float output[3], bool targetMode);
 void camGetDirection(float output[3]);
+void camGetAngles(float output[2]);
 void camSmoothingStep(float dt);

@@ -40,6 +40,8 @@ void cameraProcesses(float dt)
 
 	float direction[3];
 	camGetDirection(direction);
+	float angles[2];
+	camGetAngles(angles);
 	if (isSpecialDown(GLUT_KEY_UP))
 	{
 		camSetAngle(0,degPerSec*dt, 1, 1);
@@ -75,9 +77,34 @@ void cameraProcesses(float dt)
 	if (isKeyDown('a'))
 	{
 		float multiplied[3];
-	    multiplied[0] = direction[2] * unitPerSec * dt;
-	    multiplied[2] = direction[0] * unitPerSec * dt;
-	    multiplied[1] = 0.f;
+		multiplied[0] = -cos(angles[0] / 180.*PI) * unitPerSec * dt;
+		multiplied[2] = -sin(angles[0] / 180.*PI) * unitPerSec * dt;
+		multiplied[1] = 0.f;
+		camSetPos(multiplied, 1, 1);
+	}
+	if (isKeyDown('d'))
+	{
+		float multiplied[3];
+		multiplied[0] = cos(angles[0] / 180.*PI) * unitPerSec * dt;
+		multiplied[2] = sin(angles[0] / 180.*PI) * unitPerSec * dt;
+		multiplied[1] = 0.f;
+		camSetPos(multiplied, 1, 1);
+	}
+	if (isSpecialDown(GLUT_KEY_SHIFT_L))
+	{
+		float multiplied[3];
+		multiplied[0] = -sin(angles[0] / 180.*PI) * sin(angles[1] / 180.*PI) * unitPerSec * dt;
+		multiplied[2] = cos(angles[0] / 180.*PI) * sin(angles[1] / 180.*PI) * unitPerSec * dt;
+		multiplied[1] = cos(angles[1] / 180.*PI) * unitPerSec * dt;
+		camSetPos(multiplied, 1, 1);
+	}
+	if (isSpecialDown(GLUT_KEY_CTRL_L))
+	{
+
+		float multiplied[3];
+		multiplied[0] = sin(angles[0] / 180.*PI) * sin(angles[1] / 180.*PI) * unitPerSec * dt;
+		multiplied[2] = -cos(angles[0] / 180.*PI) * sin(angles[1] / 180.*PI) * unitPerSec * dt;
+		multiplied[1] = -cos(angles[1] / 180.*PI) * unitPerSec * dt;
 		camSetPos(multiplied, 1, 1);
 	}
 	std::cout << direction[0] << "\t" << direction[1] << "\t" << direction[2] << "\n";

@@ -14,6 +14,7 @@ void initialize()
 	glEnable(GL_COLOR_MATERIAL);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_NORMALIZE);
+	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
 
 	camSetPos(20, 20, 20);
 	camTargeted(false);
