@@ -2,6 +2,7 @@
 #include "init.h"
 #include "camera.h"
 #include "texture.h"
+#include "factory.h"
 /*
 Initialise frame
 */
@@ -18,6 +19,9 @@ void initialize()
 
 	camSetPos(20, 20, 20);
 	camTargeted(false);
+
+	Factory *fact = new Factory();
+	fact->Render();
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();

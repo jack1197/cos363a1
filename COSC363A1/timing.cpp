@@ -3,7 +3,6 @@
 #include "keyboard.h"
 #include "camera.h"
 #include <chrono>
-#include <iostream>
 
 using namespace std::chrono;
 namespace myTiming

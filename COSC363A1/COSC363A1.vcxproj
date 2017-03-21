@@ -114,6 +114,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="factory.cpp" />
     <ClCompile Include="handlers.cpp" />
     <ClCompile Include="init.cpp" />
     <ClCompile Include="keyboard.cpp" />
@@ -123,9 +124,11 @@
     <ClCompile Include="timing.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="base_object.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="display.h" />
+    <ClInclude Include="factory.h" />
     <ClInclude Include="handlers.h" />
     <ClInclude Include="init.h" />
     <ClInclude Include="keyboard.h" />

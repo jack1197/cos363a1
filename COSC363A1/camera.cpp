@@ -182,4 +182,4 @@ void camGetDirection(float output[3], bool targetMode)
 	output[0] = sin(MyCamera::camSetAngle[0]/180.*PI) * cos(MyCamera::camSetAngle[1]/180.*PI);
 	output[1] = sin(MyCamera::camSetAngle[1]/180.*PI);
 	output[2] = -cos(MyCamera::camSetAngle[0]/180.*PI) * cos(MyCamera::camSetAngle[1]/180.*PI);
-	}
+}
