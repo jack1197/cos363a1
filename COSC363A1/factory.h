@@ -7,7 +7,7 @@ class Factory :
 	Texture *floorTex, *wallTex;
 	void concreteFloor(int subdivisions, int repetitions);
 	void brickWall(int subdivisions, int repetitions);
-	void subdividedSurface(int subdivisions, int repetitions);
+	void subdividedSurface(int subdivisions, int repetitions, float v_stretch);
 
 public:
 	Factory();

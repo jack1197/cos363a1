@@ -33,8 +33,8 @@ void frameProcesses(int number)
 
 void cameraProcesses(float dt)
 {
-	const float degPerSec = 30;
-	const float unitPerSec = 10;
+	const float degPerSec = 50;
+	const float unitPerSec = 20;
 
 
 	float direction[3];

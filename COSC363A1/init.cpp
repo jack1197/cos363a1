@@ -26,7 +26,7 @@ void initialize()
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(60, 1, 1, 10000);  //The camera view volume  
+	gluPerspective(60, 1, .01, 10000);  //The camera view volume  
 
 	Texture floorTex = Texture("TexturesCom_ConcreteBare0433_11_seamless_S.tga");
 

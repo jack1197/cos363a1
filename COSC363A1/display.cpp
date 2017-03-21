@@ -17,7 +17,7 @@ void render()
 	glLoadIdentity();
 	cameraMatrix();
 
-	float lightpos[4] = { -10.f, 50.f, 10.f, 1.0f };
+	float lightpos[4] = { -10.f, 30.f, 10.f, 1.0f };
 	glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 	rootObj->Render();
 	//update screen
