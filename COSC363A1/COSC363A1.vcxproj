@@ -113,6 +113,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="base_object.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="factory.cpp" />
     <ClCompile Include="handlers.cpp" />

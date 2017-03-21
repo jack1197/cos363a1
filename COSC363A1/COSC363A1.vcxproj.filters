@@ -45,8 +45,11 @@
     <ClCompile Include="texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="base_object.cpp">
+      <Filter>Source Files\MyObjects</Filter>
+    </ClCompile>
     <ClCompile Include="factory.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MyObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -84,7 +87,7 @@
       <Filter>Header Files\MyObjects</Filter>
     </ClInclude>
     <ClInclude Include="factory.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\MyObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
