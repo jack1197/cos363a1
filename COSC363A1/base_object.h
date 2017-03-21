@@ -2,6 +2,6 @@
 class SceneObject{
 
 public:
-	void Render() {}
-	void Process(double dt) {}
+	virtual void Render();
+	virtual void Process(double dt);
 };

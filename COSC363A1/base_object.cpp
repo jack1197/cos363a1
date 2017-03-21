@@ -3,7 +3,7 @@
 
 void SceneObject::Render()
 {
-
+    
 }
 
 void SceneObject::Process(double dt)

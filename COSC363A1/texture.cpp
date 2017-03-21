@@ -21,6 +21,11 @@ Texture::Texture(std::string fileName, std::string type)
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 }
 
+Texture::~Texture()
+{
+	glDeleteTextures(1, &txId);
+}
+
 void Texture::bind()
 {
 	glBindTexture(GL_TEXTURE_2D, txId);
