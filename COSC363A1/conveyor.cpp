@@ -89,11 +89,24 @@ void Conveyor::Render()
 
 void Conveyor::Frame()
 {
+    glColor3f(1.,1.,1.);
     GLUquadricObj *quadObj = gluNewQuadric();
     glPushMatrix();
     for (int i = 0; i < 10; i++)
     {
         gluCylinder(quadObj, 1, 1, 10, 20, 5);
+
+        glPushMatrix();
+        glRotatef(90, 1,0,0);
+        gluCylinder(quadObj, 0.4, 0.4, 30, 20, 5);
+        glPopMatrix();
+
+        glPushMatrix();
+        glTranslatef(0, 0, 10);
+        glRotatef(90, 1,0,0);
+        gluCylinder(quadObj, 0.4, 0.4, 30, 20, 5);
+        glPopMatrix();
+
         glTranslatef(8, 0, 0);
     }
     glPopMatrix();
