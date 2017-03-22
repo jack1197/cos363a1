@@ -11,7 +11,7 @@ Conveyor::~Conveyor()
 
 void Conveyor::Process(double dt)
 {
-    float cyclesPerSec = 1.f;
+    float cyclesPerSec = 2.f;
     if (cyclesPerSec > 0)
     {
         cycleProgress = fmod(cycleProgress + cyclesPerSec * dt, 1);
@@ -99,7 +99,7 @@ void Conveyor::Frame()
 	float spec_colour[3] = {.4f, .4f, .4f};
 	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
 	glMaterialf(GL_FRONT, GL_SHININESS, 3); 
-    glColor3f(1.,1.,1.);
+    glColor3f(.7f,.7f,.7f);
     GLUquadricObj *quadObj = gluNewQuadric();
     glPushMatrix();
     for (int i = 0; i < 10; i++)
