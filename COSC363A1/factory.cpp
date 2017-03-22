@@ -19,7 +19,7 @@ void Factory::Render()
     glPushMatrix();
     glScalef(100, 1, 100);
     glTranslatef(-0.5f, 0.f, -0.5f);
-    concreteFloor(10, 3);
+    concreteFloor(100, 3);
     glPopMatrix();
 
     glPushMatrix();
@@ -30,11 +30,12 @@ void Factory::Render()
 	glRotatef(90, 1, 0, 0);
 	glScalef(100, 1, 25);
 	glTranslatef(-0.5, 0, -0.5);
-	brickWall(10, 10);
+	brickWall(100, 10);
 	glPopMatrix();
 	glRotatef(90, 0, 1, 0);
     }
     glPopMatrix();
+
     glPushMatrix();
     glTranslatef(19.5, 0, 0);
     conveyor->Render();
@@ -52,6 +53,9 @@ void Factory::Process(double dt)
 
 void Factory::brickWall(int subdivisions, int repetitions)
 {
+	float spec_colour[3] = {.1f, .1f, .1f};
+	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
+	glMaterialf(GL_FRONT, GL_SHININESS, 2); 
     wallTex->bind();
     glColor3f(1.f, 1.f, 1.f);
     glEnable(GL_TEXTURE_2D);
@@ -63,6 +67,9 @@ void Factory::brickWall(int subdivisions, int repetitions)
 
 void Factory::concreteFloor(int subdivisions, int repetitions)
 {
+	float spec_colour[3] = {.6f, .6f, .6f};
+	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
+	glMaterialf(GL_FRONT, GL_SHININESS, 2); 
     floorTex->bind();
     glColor3f(1.f, 1.f, 1.f);
     glEnable(GL_TEXTURE_2D);

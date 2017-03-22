@@ -24,13 +24,17 @@ void Conveyor::Process(double dt)
 
 void Conveyor::Render()
 {
+
     glPushMatrix();
     glScalef(0.5, 0.5, 0.5);
     glTranslatef(-36, 10, -5);
     Frame();
     glPopMatrix();
-    glColor3f(0.2, 0.2, 0.2);
+    glColor3f(0.0, 0.0, 0.0);
 
+	float spec_colour[3] = {.7f, .7f, .7f};
+	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
+	glMaterialf(GL_FRONT, GL_SHININESS, 10); 
     //upper belt
     glPushMatrix();
     glTranslatef(-18 + 1.2 * cycleProgress, 5.7, 0);
@@ -89,6 +93,9 @@ void Conveyor::Render()
 
 void Conveyor::Frame()
 {
+	float spec_colour[3] = {.4f, .4f, .4f};
+	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
+	glMaterialf(GL_FRONT, GL_SHININESS, 3); 
     glColor3f(1.,1.,1.);
     GLUquadricObj *quadObj = gluNewQuadric();
     glPushMatrix();
