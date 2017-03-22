@@ -3,6 +3,7 @@
 class Conveyor :
 	public SceneObject
 {
+	float cycleProgress = 0;
 	void Frame();
 public:
 	Conveyor();

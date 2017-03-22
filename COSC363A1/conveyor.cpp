@@ -13,7 +13,15 @@ Conveyor::~Conveyor()
 
 void Conveyor::Process(double dt)
 {
-
+    float cyclesPerSec = 1.f;
+    if (cyclesPerSec > 0)
+    {
+    cycleProgress = fmod(cycleProgress + cyclesPerSec * dt, 1);
+    }
+    else
+    {
+    cycleProgress = fmod((cycleProgress-1) + dt * cyclesPerSec, 1)+1;
+    }
 }
 
 void Conveyor::Render()
@@ -25,8 +33,24 @@ void Conveyor::Render()
     glPopMatrix();
     glColor3f(0.2,0.2,0.2);
     
+    //upper belt
     glPushMatrix();
-    glTranslatef(-18,5.7,0);
+    glTranslatef(-18+1.2*cycleProgress,5.7,0);
+    for(float i = 0; i<=36; i+=1.2)
+    {
+    glPushMatrix();
+
+    glScalef(1, 0.25, 4.4);
+    glutSolidCube(1);
+    glPopMatrix();
+    glTranslatef(1.2,0,0);
+    }
+    glPopMatrix();
+
+    //lower belt
+    glPushMatrix();
+    glRotatef(180, 0, 1,0);
+    glTranslatef(-18+1.2*cycleProgress,4.3,0);
     for(float i = 0; i<=36; i+=1.2)
     {
     glPushMatrix();

@@ -18,7 +18,8 @@ void initialize()
 	glEnable(GL_NORMALIZE);
 	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
 
-	camSetPos(20, 20, 20);
+	camSetPos(0.f, 20.f, 20.f);
+	camSetAngle(30,-20,1,0);
 	camTargeted(false);
 
 	Factory *fact = new Factory();
