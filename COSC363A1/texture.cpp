@@ -8,6 +8,7 @@ Texture::Texture(std::string fileName, std::string type)
 {
 	glGenTextures(1, &txId);
 	glBindTexture(GL_TEXTURE_2D, txId);
+	glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP, GL_TRUE);
 	if (type == "TGA")
 	{
 		loadTGA(fileName.c_str());
@@ -16,8 +17,8 @@ Texture::Texture(std::string fileName, std::string type)
 	{
 		loadBMP(fileName.c_str());
 	}
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 }
 
