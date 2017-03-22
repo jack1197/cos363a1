@@ -12,12 +12,12 @@ Robot::~Robot()
 }
 
 
-void Render() 
+void Robot::Render()
 {
 
 }
 
-void Process(double dt)
+void Robot::Process(double dt)
 {
 
 }
