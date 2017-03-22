@@ -31,10 +31,5 @@ void initialize()
 
 	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
 	glEnable(GL_COLOR_MATERIAL);
-	float spec_colour[3] = {1.f, 1.f, 1.f};
-	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
-	glMaterialf(GL_FRONT, GL_SHININESS, 5); 
-
-	Texture floorTex = Texture("TexturesCom_ConcreteBare0433_11_seamless_S.tga");
 
 }

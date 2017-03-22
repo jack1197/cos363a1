@@ -30,11 +30,12 @@ void Conveyor::Render()
     glTranslatef(-36, 10, -5);
     Frame();
     glPopMatrix();
-    glColor3f(0.0, 0.0, 0.0);
 
-	float spec_colour[3] = {.7f, .7f, .7f};
+    glColor3f(0.1, 0.1, 0.1);
+	float spec_colour[3] = {.5f, .5f, .5f};
 	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
 	glMaterialf(GL_FRONT, GL_SHININESS, 10); 
+
     //upper belt
     glPushMatrix();
     glTranslatef(-18 + 1.2 * cycleProgress, 5.7, 0);
@@ -63,6 +64,7 @@ void Conveyor::Render()
         glTranslatef(1.2, 0, 0);
     }
     glPopMatrix();
+    
     glPushMatrix();
 
     for (int i = 0; i < 2; i++)
@@ -88,6 +90,7 @@ void Conveyor::Render()
     glPopMatrix();
 
     }
+    
     glPopMatrix();
 }
 
