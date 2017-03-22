@@ -55,7 +55,7 @@
       <Filter>Source Files\MyObjects</Filter>
     </ClCompile>
     <ClCompile Include="robot.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\MyObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -17,7 +17,7 @@ void render()
 	glLoadIdentity();
 	cameraMatrix();
 
-	float lightpos[4] = { 0.f, 30.f, 0.f, 1.0f };
+	float lightpos[4] = { 30.f, 30.f, -30.f, 1.0f };
 	float lightspec[3] = { 1.f, 1.f, 1.f};
 	glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, lightspec);

@@ -6,12 +6,15 @@ Factory::Factory()
     floorTex = new Texture("TexturesCom_ConcreteBare0433_11_seamless_S.tga", "TGA");
     wallTex = new Texture("TexturesCom_BrickSmallBrown0270_1_seamless_S.tga", "TGA");
     conveyor = new Conveyor();
+	robot1 = new Robot();
 }
 
 Factory::~Factory()
 {
     delete floorTex;
     delete wallTex;
+	delete conveyor;
+	delete robot1;
 }
 
 void Factory::Render()
@@ -25,6 +28,7 @@ void Factory::Render()
     glPushMatrix();
     for (int i = 0; i < 4; i++)
     {
+		
 	glPushMatrix();
 	glTranslatef(0, 12.5, -50);
 	glRotatef(90, 1, 0, 0);
@@ -35,7 +39,7 @@ void Factory::Render()
 	glRotatef(90, 0, 1, 0);
     }
     glPopMatrix();
-
+	/*
     glPushMatrix();
     glTranslatef(19.5, 0, 0);
     conveyor->Render();
@@ -44,6 +48,8 @@ void Factory::Render()
     glTranslatef(-19, 0, 0);
     conveyor->Render();
     glPopMatrix();
+	*/
+	robot1->Render();
 }
 
 void Factory::Process(double dt)
