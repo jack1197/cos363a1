@@ -99,7 +99,7 @@ void Conveyor::Frame()
 	float spec_colour[3] = {.4f, .4f, .4f};
 	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
 	glMaterialf(GL_FRONT, GL_SHININESS, 3); 
-    glColor3f(.7f,.7f,.7f);
+    glColor3f(.3f,.3f,.3f);
     GLUquadricObj *quadObj = gluNewQuadric();
     glPushMatrix();
     for (int i = 0; i < 10; i++)
