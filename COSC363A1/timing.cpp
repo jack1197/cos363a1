@@ -2,6 +2,7 @@
 #include "timing.h"
 #include "keyboard.h"
 #include "camera.h"
+#include "display.h"
 #include <chrono>
 
 using namespace std::chrono;
@@ -26,6 +27,8 @@ void frameProcesses(int number)
 
 	camSmoothingStep(dt);
 	cameraProcesses(dt);
+
+	getRootObj()->Process(dt);
 
 
 	glutPostRedisplay();

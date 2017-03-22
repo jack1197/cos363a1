@@ -3,8 +3,11 @@
 class Conveyor :
 	public SceneObject
 {
+	void Frame();
 public:
 	Conveyor();
 	~Conveyor();
+	virtual void Render();
+	virtual void Process(double dt);
 };
 

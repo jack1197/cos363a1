@@ -4,3 +4,4 @@
 void render();
 void concreteFloor(int subdivisions, int repetitions);
 void setRootObj(SceneObject *obj);
+SceneObject *getRootObj();

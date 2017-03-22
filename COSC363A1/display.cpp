@@ -29,3 +29,8 @@ void setRootObj(SceneObject *obj)
 {
 	rootObj = obj;
 }
+
+SceneObject *getRootObj()
+{
+	return rootObj;
+}

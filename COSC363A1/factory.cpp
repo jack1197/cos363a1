@@ -6,6 +6,7 @@ Factory::Factory()
 {
 	floorTex = new Texture("TexturesCom_ConcreteBare0433_11_seamless_S.tga", "TGA");
 	wallTex = new Texture("TexturesCom_BrickSmallBrown0270_1_seamless_S.tga", "TGA");
+	conveyor = new Conveyor();
 }
 
 
@@ -31,16 +32,18 @@ void Factory::Render()
 		glRotatef(90, 1, 0, 0);
 		glScalef(100, 1, 25);
 		glTranslatef(-0.5, 0, -0.5);
-		brickWall(10, 6);
+		brickWall(10, 10);
 		glPopMatrix();
 		glRotatef(90, 0, 1, 0);
 	}
 	glPopMatrix();
+
+	conveyor->Render();
 }
 
 void Factory::Process(double dt)
 {
-
+	conveyor->Process(dt);
 }
 
 void Factory::brickWall(int subdivisions, int repetitions)
@@ -67,6 +70,7 @@ void Factory::concreteFloor(int subdivisions, int repetitions)
 
 void Factory::subdividedSurface(int subdivisions, int repetitions, float v_stretch)
 {
+	glNormal3f(0,1,0);
 	for (int i = 0; i < subdivisions; i++)
 		for (int j = 0; j < subdivisions; j++)
 		{
