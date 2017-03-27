@@ -54,6 +54,9 @@
     <ClCompile Include="conveyor.cpp">
       <Filter>Source Files\MyObjects</Filter>
     </ClCompile>
+    <ClCompile Include="robot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -93,6 +96,9 @@
       <Filter>Header Files\MyObjects</Filter>
     </ClInclude>
     <ClInclude Include="conveyor.h">
+      <Filter>Header Files\MyObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="robot.h">
       <Filter>Header Files\MyObjects</Filter>
     </ClInclude>
   </ItemGroup>
