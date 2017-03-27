@@ -58,6 +58,12 @@ void Robot::Render()
 	gluDisk(quadObj, 0, sidelength / 2 - 0.7, 30, 3);
 	glPopMatrix();
 
+	glTranslatef(0, sidelength / 2. - 0.7, 0);
+	glPushMatrix();
+	glTranslatef(0,0,-1);
+	gluCylinder(quadObj, 1,1, 2, 30, 3);
+	glPopMatrix();
+
 	glPopMatrix();
 }
 
