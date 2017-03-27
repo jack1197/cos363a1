@@ -16,6 +16,7 @@ void initialize()
 	glEnable(GL_COLOR_MATERIAL);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_NORMALIZE);
+	glEnable(GL_CULL_FACE);
 	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
 	glEnable(GL_CULL_FACE);
 

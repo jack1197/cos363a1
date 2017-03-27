@@ -65,9 +65,7 @@ void Factory::brickWall(int subdivisions, int repetitions)
     wallTex->bind();
     glColor3f(1.f, 1.f, 1.f);
     glEnable(GL_TEXTURE_2D);
-    glBegin(GL_QUADS);
     subdividedSurface(subdivisions, repetitions, 0.25);
-    glEnd();
     glDisable(GL_TEXTURE_2D);
 }
 
@@ -79,14 +77,13 @@ void Factory::concreteFloor(int subdivisions, int repetitions)
     floorTex->bind();
     glColor3f(1.f, 1.f, 1.f);
     glEnable(GL_TEXTURE_2D);
-    glBegin(GL_QUADS);
     subdividedSurface(subdivisions, repetitions, 1);
-    glEnd();
     glDisable(GL_TEXTURE_2D);
 }
 
 void Factory::subdividedSurface(int subdivisions, int repetitions, float v_stretch)
 {
+    glBegin(GL_QUADS);
     glNormal3f(0, 1, 0);
     for (int i = 0; i < subdivisions; i++)
 	for (int j = 0; j < subdivisions; j++)
@@ -105,4 +102,5 @@ void Factory::subdividedSurface(int subdivisions, int repetitions, float v_stret
 	    glTexCoord2f(x2 * repetitions, y1 * repetitions * v_stretch);
 	    glVertex3f(x2, 0.f, y1);
 	}
+    glEnd();
 }
