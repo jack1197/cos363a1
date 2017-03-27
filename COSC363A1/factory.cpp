@@ -49,7 +49,10 @@ void Factory::Render()
     conveyor->Render();
     glPopMatrix();
 	*/
+    glPushMatrix();
+    glTranslatef(0,7,0);
 	robot1->Render();
+    glPopMatrix();
 }
 
 void Factory::Process(double dt)

@@ -15,7 +15,7 @@ Robot::~Robot()
 
 void Robot::Render()
 {
-	float height = 7.f;
+	float height = 0.f;
 	float base = 40.0f;
 	float sidelength = 5.0f;
 	float baseCylHeight = 1.f;
@@ -82,11 +82,19 @@ void Robot::Render()
 
 	glTranslatef(0,armLength1,0);
 	//Arm segment 2
+	glRotatef(armAngle2, 0, 0,1);
 
 	glPushMatrix();
 	glTranslatef(0,0,-1);
 	gluCylinder(quadObj, 0.75,0.75, 2, 30, 3);
 	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(0,(armLength2-1)/2,0);
+	glScalef(2,armLength2+1,0.75);
+	glutSolidCube(1);
+	glPopMatrix();
+
+	glTranslatef(0,armLength2,0);
 
 
 	glPopMatrix();
