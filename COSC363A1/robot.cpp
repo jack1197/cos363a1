@@ -162,6 +162,14 @@ void Robot::Process(double dt)
 {
 	time += dt;
 	movementStep(dt);
+	if (fmod(time, 10) > 5)
+	{
+		setPos(3,-1,-5);
+	}
+	else
+	{
+		setPos(8, 5, 8);
+	}
 }
 
 
@@ -181,7 +189,7 @@ void Robot::setPos(float x, float y , float z)
 	float theta_prime = acos((pow(armLength2, 2) - pow(armLength1, 2) - d_squared)/(-2*armLength1*pow(d_squared, 0.5)));
 	float theta = PI/2 - d_angle - theta_prime;
 	float phi = PI - acos((d_squared - pow(armLength1,2) - pow(armLength2, 2))/(-2*armLength1*armLength2));
-	float gamma = atan(z/x) + (z<0 && y<0 ? PI : 0);
+	float gamma = atan(z/x) + (z<0 && x<0 ? PI : 0);
 
 	coreAngleTarget = gamma / PI * 180.;
 	armAngle1Target = theta / PI * 180.;
