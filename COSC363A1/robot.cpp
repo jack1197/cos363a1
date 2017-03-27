@@ -4,7 +4,7 @@
 
 Robot::Robot()
 {
-
+	setPos(7,-4,8);
 }
 
 
@@ -35,7 +35,7 @@ void Robot::Render()
 	glutSolidCube(1);
 	glPopMatrix();
 
-	glRotatef(coreAngle, 0, 1, 0);
+	glRotatef(180-coreAngle, 0, 1, 0);
 
 	//core axis
 	glPushMatrix();
@@ -100,9 +100,67 @@ void Robot::Render()
 	glPopMatrix();
 }
 
+void Robot::movementStep(double dt)
+{
+const float coreAnglePerSec = 80;
+	const float arm1AnglePerSec = 45;
+	const float arm2AnglePerSec = 80;
+
+	float coreError = remainder(coreAngle - coreAngleTarget, 360);
+	float arm1Error = armAngle1 - armAngle1Target;
+	float arm2Error = armAngle2 - armAngle2Target;
+	std::cout<<"coreError: "<<coreError<<"\ttarget: "<<coreAngleTarget<<"\tcurrent: "<<coreAngle<<"\n";
+
+	if (coreError > 0)
+	{
+		coreAngle -= coreAnglePerSec * dt;
+		coreError = remainder(coreAngle - coreAngleTarget, 360);
+		if (coreError < 0)
+		coreAngle = coreAngleTarget;
+	}
+	else if (coreError < 0)
+	{
+		coreAngle += coreAnglePerSec * dt;
+		coreError = remainder(coreAngle - coreAngleTarget, 360);
+		if (coreError > 0)
+		coreAngle = coreAngleTarget;
+	}
+
+	if (arm1Error > 0)
+	{
+		armAngle1 -= arm1AnglePerSec * dt;
+		arm1Error = armAngle1 - armAngle1Target;
+		if (arm1Error < 0)
+		armAngle1 = armAngle1Target;
+	}
+	else if (arm1Error < 0)
+	{
+		armAngle1 += arm1AnglePerSec * dt;
+		arm1Error = armAngle1 - armAngle1Target;
+		if (arm1Error > 0)
+		armAngle1 = armAngle1Target;
+	}
+
+	if (arm2Error > 0)
+	{
+		armAngle2 -= arm2AnglePerSec * dt;
+		arm2Error = armAngle2 - armAngle2Target;
+		if (arm2Error < 0)
+		armAngle2 = armAngle2Target;
+	}
+	else if (arm2Error < 0)
+	{
+		armAngle2 += arm2AnglePerSec * dt;
+		arm2Error = armAngle2 - armAngle2Target;
+		if (arm2Error > 0)
+		armAngle2 = armAngle2Target;
+	}
+}
+
 void Robot::Process(double dt)
 {
-	
+	time += dt;
+	movementStep(dt);
 }
 
 
@@ -111,4 +169,20 @@ void Robot::setAngles(float core, float arm1, float arm2)
 	coreAngle = core;
 	armAngle1 = arm1;
 	armAngle2 = arm2;
+}
+
+void Robot::setPos(float x, float y , float z)
+{
+	float y_prime = y - axisHeight;
+	float r = pow(pow(x, 2)+ pow( z, 2), 0.5);
+	float d_squared = pow(y_prime, 2) + pow(r, 2);
+	float d_angle = atan(y_prime/r);
+	float theta_prime = acos((pow(armLength2, 2) - pow(armLength1, 2) - d_squared)/(-2*armLength1*pow(d_squared, 0.5)));
+	float theta = PI/2 - d_angle - theta_prime;
+	float phi = PI - acos((d_squared - pow(armLength1,2) - pow(armLength2, 2))/(-2*armLength1*armLength2));
+	float gamma = atan(z/x) + (z<0 && y<0 ? PI : 0);
+
+	coreAngleTarget = gamma / PI * 180.;
+	armAngle1Target = theta / PI * 180.;
+	armAngle2Target = phi / PI * 180.;
 }
