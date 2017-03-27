@@ -4,7 +4,7 @@
 
 Robot::Robot()
 {
-	setPos(7,-4,8);
+	setPos(7,-8,8);
 }
 
 
@@ -21,6 +21,7 @@ void Robot::Render()
 	float baseCylHeight = 1.f;
 	GLUquadric *quadObj = gluNewQuadric();
 
+	glColor3f(.8,.8,.4);
 	float spec_colour[3] = { .8f, .8f, .4f };
 	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
 	glMaterialf(GL_FRONT, GL_SHININESS, 2);
@@ -109,7 +110,7 @@ const float coreAnglePerSec = 80;
 	float coreError = remainder(coreAngle - coreAngleTarget, 360);
 	float arm1Error = armAngle1 - armAngle1Target;
 	float arm2Error = armAngle2 - armAngle2Target;
-	std::cout<<"coreError: "<<coreError<<"\ttarget: "<<coreAngleTarget<<"\tcurrent: "<<coreAngle<<"\n";
+	//std::cout<<"coreError: "<<coreError<<"\ttarget: "<<coreAngleTarget<<"\tcurrent: "<<coreAngle<<"\n";
 
 	if (coreError > 0)
 	{
