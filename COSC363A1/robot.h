@@ -3,8 +3,10 @@
 class Robot :
 	public SceneObject
 {
-	float armAngle1 = 0;
+	float armAngle1 = 50;
+	float armLength1 = 7;
 	float armAngle2 = 0;
+	float armLength2 = 7;
 	float coreAngle = 0;
 public:
 	Robot();

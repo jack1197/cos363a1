@@ -55,6 +55,7 @@ void Factory::Render()
 void Factory::Process(double dt)
 {
     conveyor->Process(dt);
+    robot1->Process(dt);
 }
 
 void Factory::brickWall(int subdivisions, int repetitions)

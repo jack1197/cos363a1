@@ -4,6 +4,7 @@
 
 Robot::Robot()
 {
+
 }
 
 
@@ -34,6 +35,8 @@ void Robot::Render()
 	glutSolidCube(1);
 	glPopMatrix();
 
+	glRotatef(coreAngle, 0, 1, 0);
+
 	//core axis
 	glPushMatrix();
 	glRotatef(-90, 1, 0, 0);
@@ -49,27 +52,49 @@ void Robot::Render()
 	glutSolidCube(2);
 	glPopMatrix();
 	glTranslatef(0, sidelength / 2. - 0.7, -0.75/2);
-	gluCylinder(quadObj, sidelength / 2. - 0.7, sidelength / 2. - 0.7, 0.75, 30, 3);
+	gluCylinder(quadObj, sidelength / 2. - 0.7, sidelength / 2. - 0.7, 0.75, 40, 3);
 	glPushMatrix();
 	glRotatef(180, 0, 1,0 );
-	gluDisk(quadObj, 0, sidelength / 2 - 0.7, 30, 3);
+	gluDisk(quadObj, 0, sidelength / 2 - 0.7, 40, 3);
 	glPopMatrix();
 	glTranslatef(0, 0, 0.75);
-	gluDisk(quadObj, 0, sidelength / 2 - 0.7, 30, 3);
+	gluDisk(quadObj, 0, sidelength / 2 - 0.7, 40, 3);
 	glPopMatrix();
 
 	glTranslatef(0, sidelength / 2. - 0.7, 0);
 	glPushMatrix();
 	glTranslatef(0,0,-1);
-	gluCylinder(quadObj, 1,1, 2, 30, 3);
+	gluCylinder(quadObj, 0.75,0.75, 2, 30, 3);
 	glPopMatrix();
+
+	glRotatef(armAngle1, 0, 0, 1);
+	//arm segment 1
+	glPushMatrix();
+	glTranslatef(0,armLength1/2,1);
+	glScalef(2,armLength1+2,0.75);
+	glutSolidCube(1);
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(0,armLength1/2,-1);
+	glScalef(2,armLength1+2,0.75);
+	glutSolidCube(1);
+	glPopMatrix();
+
+	glTranslatef(0,armLength1,0);
+	//Arm segment 2
+
+	glPushMatrix();
+	glTranslatef(0,0,-1);
+	gluCylinder(quadObj, 0.75,0.75, 2, 30, 3);
+	glPopMatrix();
+
 
 	glPopMatrix();
 }
 
 void Robot::Process(double dt)
 {
-
+	
 }
 
 
