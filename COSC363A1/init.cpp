@@ -22,6 +22,8 @@ void initialize()
 	glEnable(GL_CULL_FACE);
 	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
 	glEnable(GL_CULL_FACE);
+	//glEnable(GL_BLEND);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	camSetPos(0.f, 20.f, 20.f);
 	camSetAngle(30,-20,1,0);

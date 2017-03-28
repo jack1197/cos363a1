@@ -6,7 +6,7 @@ Factory::Factory()
     floorTex = new Texture("TexturesCom_ConcreteBare0433_11_seamless_S.tga", "TGA");
     wallTex = new Texture("TexturesCom_BrickSmallBrown0270_1_seamless_S.tga", "TGA");
     conveyor = new Conveyor();
-	robot1 = new Robot();
+	robot1 = new Robot(7,7);
 }
 
 Factory::~Factory()

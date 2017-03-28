@@ -2,9 +2,11 @@
 #include "common.h"
 
 
-Robot::Robot()
+Robot::Robot(float armLength1, float armLength2)
 {
 	setPos(7,-8,8);
+	this->armLength1 = armLength1;
+	this->armLength2 = armLength2;
 }
 
 
@@ -21,7 +23,7 @@ void Robot::Render()
 	float baseCylHeight = 1.f;
 	GLUquadric *quadObj = gluNewQuadric();
 
-	glColor3f(.8,.8,.4);
+	glColor4f(.8,.8,.4, 1);
 	float spec_colour[3] = { .8f, .8f, .4f };
 	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
 	glMaterialf(GL_FRONT, GL_SHININESS, 2);
