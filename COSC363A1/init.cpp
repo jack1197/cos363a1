@@ -25,8 +25,8 @@ void initialize()
 	//glEnable(GL_BLEND);
 	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	camSetPos(0.f, 20.f, 20.f);
-	camSetAngle(30,-20,1,0);
+	camSetPos(-10.f, 40.f, 40.f);
+	camSetAngle(10,-40,1,0);
 	camTargeted(false);
 
 	Factory *fact = new Factory();
