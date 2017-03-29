@@ -12,8 +12,8 @@ ObjMesh::ObjMesh(std::string fileName, float color[4])
     std::string line;
     if (!file.is_open())
     {
-        return;
         std::cout<<"could not open mesh: "<<fileName<<"\n";
+        return;
     }
     int n = 0;
     while (std::getline(file, line))
@@ -28,7 +28,7 @@ ObjMesh::ObjMesh(std::string fileName, float color[4])
             strstream >> vertex[1];
             strstream >> vertex[2];
             verticies.push_back(vertex);
-            std::cout<<n++<<"\n";
+            //std::cout<<n++<<"\n";
         }
         else if(line.at(0) == 'f')
         {

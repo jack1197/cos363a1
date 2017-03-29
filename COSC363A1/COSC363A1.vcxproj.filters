@@ -57,6 +57,9 @@
     <ClCompile Include="robot.cpp">
       <Filter>Source Files\MyObjects</Filter>
     </ClCompile>
+    <ClCompile Include="mesh.cpp">
+      <Filter>Source Files\MyObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -101,6 +104,9 @@
     <ClInclude Include="robot.h">
       <Filter>Header Files\MyObjects</Filter>
     </ClInclude>
+    <ClInclude Include="mesh.h">
+      <Filter>Header Files\MyObjects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="TexturesCom_ConcreteBare0433_11_seamless_S.tga">
@@ -109,5 +115,28 @@
     <Image Include="TexturesCom_BrickSmallBrown0270_1_seamless_S.tga">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="screen.obj">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="antenna.obj">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="back.obj">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="board.obj">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="chip.obj">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="front.obj">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="keys.obj">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>
