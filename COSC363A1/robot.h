@@ -1,5 +1,7 @@
 #pragma once
 #include "base_object.h"
+#include "mesh.h"
+
 class Robot :
 	public SceneObject
 {

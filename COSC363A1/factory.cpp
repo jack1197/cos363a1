@@ -7,6 +7,14 @@ Factory::Factory()
     wallTex = new Texture("TexturesCom_BrickSmallBrown0270_1_seamless_S.tga", "TGA");
     conveyor = new Conveyor();
 	robot1 = new Robot(7,7);
+	float color[4] = {.8,.8,.8,1.};
+	thing = new ObjMesh("front.obj" , color);
+	thing1 = new ObjMesh("back.obj" , color);
+	thing2 = new ObjMesh("screen.obj" , color);
+	thing3 = new ObjMesh("keys.obj" , color);
+	thing4 = new ObjMesh("antenna.obj" , color);
+	thing5 = new ObjMesh("board.obj" , color);
+	thing6 = new ObjMesh("chip.obj" , color);
 }
 
 Factory::~Factory()
@@ -53,6 +61,14 @@ void Factory::Render()
     glTranslatef(0,7,5.5);
 	robot1->Render();
     glPopMatrix();
+
+    thing->Render();
+    thing1->Render();
+    thing2->Render();
+    thing3->Render();
+    thing4->Render();
+    thing5->Render();
+    thing6->Render();
 }
 
 void Factory::Process(double dt)

@@ -17,6 +17,7 @@ Robot::~Robot()
 
 void Robot::Render()
 {
+
 	float height = 0.f;
 	float base = 40.0f;
 	float sidelength = 5.0f;
