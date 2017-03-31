@@ -7,7 +7,7 @@ Factory::Factory()
     wallTex = new Texture("TexturesCom_BrickSmallBrown0270_1_seamless_S.tga", "TGA");
     conveyor = new Conveyor();
 	robot1 = new Robot(7,7);
-	float color[4] = {.8,.8,.8,1.};
+	float color[4] = {.8f,.8,.8f,1.f};
 	thing = new ObjMesh("front.obj" , color);
 	thing1 = new ObjMesh("back.obj" , color);
 	thing2 = new ObjMesh("screen.obj" , color);
@@ -38,10 +38,10 @@ void Factory::Render()
     {
 		
 	glPushMatrix();
-	glTranslatef(0, 12.5, -50);
+	glTranslatef(0, 12.5f, -50);
 	glRotatef(90, 1, 0, 0);
 	glScalef(100, 1, 25);
-	glTranslatef(-0.5, 0, -0.5);
+	glTranslatef(-0.5f, 0, -0.5f);
 	brickWall(100, 10);
 	glPopMatrix();
 	glRotatef(90, 0, 1, 0);
@@ -49,7 +49,7 @@ void Factory::Render()
     glPopMatrix();
 	
     glPushMatrix();
-    glTranslatef(19.5, 0, 0);
+    glTranslatef(19.5f, 0, 0);
     conveyor->Render();
     glPopMatrix();
     glPushMatrix();
@@ -58,7 +58,7 @@ void Factory::Render()
     glPopMatrix();
 	
     glPushMatrix();
-    glTranslatef(0,7,5.5);
+    glTranslatef(0,7,5.5f);
 	robot1->Render();
     glPopMatrix();
 
@@ -85,7 +85,7 @@ void Factory::brickWall(int subdivisions, int repetitions)
     wallTex->bind();
     glColor3f(1.f, 1.f, 1.f);
     glEnable(GL_TEXTURE_2D);
-    subdividedSurface(subdivisions, repetitions, 0.25);
+    subdividedSurface(subdivisions, repetitions, 0.25f);
     glDisable(GL_TEXTURE_2D);
 }
 

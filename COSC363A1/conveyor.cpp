@@ -26,42 +26,42 @@ void Conveyor::Render()
 {
 
     glPushMatrix();
-    glScalef(0.5, 0.5, 0.5);
+    glScalef(0.5f, 0.5f, 0.5f);
     glTranslatef(-36, 10, -5);
     Frame();
     glPopMatrix();
 
-    glColor3f(0.1, 0.1, 0.1);
+    glColor3f(0.1f, 0.1f, 0.1f);
 	float spec_colour[3] = {.5f, .5f, .5f};
 	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
 	glMaterialf(GL_FRONT, GL_SHININESS, 10); 
 
     //upper belt
     glPushMatrix();
-    glTranslatef(-18 + 1.2 * cycleProgress, 5.7, 0);
-    for (float i = 0; i <= 36; i += 1.2)
+    glTranslatef(-18 + 1.2f * cycleProgress, 5.7f, 0);
+    for (float i = 0; i <= 36; i += 1.2f)
     {
         glPushMatrix();
 
-        glScalef(1, 0.25, 4.4);
+        glScalef(1, 0.25f, 4.4f);
         glutSolidCube(1);
         glPopMatrix();
-        glTranslatef(1.2, 0, 0);
+        glTranslatef(1.2f, 0, 0);
     }
     glPopMatrix();
 
     //lower belt
     glPushMatrix();
     glRotatef(180, 0, 1, 0);
-    glTranslatef(-18 + 1.2 * cycleProgress, 4.3, 0);
-    for (float i = 0; i <= 36; i += 1.2)
+    glTranslatef(-18 + 1.2f * cycleProgress, 4.3f, 0);
+    for (float i = 0; i <= 36; i += 1.2f)
     {
         glPushMatrix();
 
-        glScalef(1, 0.25, 4.4);
+        glScalef(1, 0.25f, 4.4f);
         glutSolidCube(1);
         glPopMatrix();
-        glTranslatef(1.2, 0, 0);
+        glTranslatef(1.2f, 0, 0);
     }
     glPopMatrix();
     
@@ -72,8 +72,8 @@ void Conveyor::Render()
     glPushMatrix();
     glTranslatef(-18, 5, 0);
     glRotatef(i*90 + 90*cycleProgress, 0,0,-1);
-    glTranslatef(0,-0.7,0);
-    glScalef(1, 0.25, 4.4);
+    glTranslatef(0,-0.7f,0);
+    glScalef(1, 0.25f, 4.4f);
     glutSolidCube(1);
     glPopMatrix();
 
@@ -84,8 +84,8 @@ void Conveyor::Render()
     glPushMatrix();
     glTranslatef(18, 5, 0);
     glRotatef(i*90 + 90*cycleProgress + 180, 0,0,-1);
-    glTranslatef(0,-0.7,0);
-    glScalef(1, 0.25, 4.4);
+    glTranslatef(0,-0.7f,0);
+    glScalef(1, 0.25f, 4.4f);
     glutSolidCube(1);
     glPopMatrix();
 
@@ -108,13 +108,13 @@ void Conveyor::Frame()
 
         glPushMatrix();
         glRotatef(90, 1,0,0);
-        gluCylinder(quadObj, 0.4, 0.4, 30, 20, 5);
+        gluCylinder(quadObj, 0.4f, 0.4f, 30, 20, 5);
         glPopMatrix();
 
         glPushMatrix();
         glTranslatef(0, 0, 10);
         glRotatef(90, 1,0,0);
-        gluCylinder(quadObj, 0.4, 0.4, 30, 20, 5);
+        gluCylinder(quadObj, 0.4f, 0.4f, 30, 20, 5);
         glPopMatrix();
 
         glTranslatef(8, 0, 0);

@@ -24,7 +24,7 @@ void Robot::Render()
 	float baseCylHeight = 1.f;
 	GLUquadric *quadObj = gluNewQuadric();
 
-	glColor4f(.8,.8,.4, 1);
+	glColor4f(.8f,.8,.4f, 1);
 	float spec_colour[3] = { .8f, .8f, .4f };
 	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
 	glMaterialf(GL_FRONT, GL_SHININESS, 2);
@@ -44,43 +44,43 @@ void Robot::Render()
 	//core axis
 	glPushMatrix();
 	glRotatef(-90, 1, 0, 0);
-	gluCylinder(quadObj, sidelength / 2. - 0.5, sidelength / 2. - 0.5, baseCylHeight, 30, 3);
+	gluCylinder(quadObj, sidelength / 2.f - 0.5f, sidelength / 2.f - 0.5f, baseCylHeight, 30, 3);
 	glTranslatef(0, 0, baseCylHeight);
-	gluDisk(quadObj, 0, sidelength / 2 - 0.5, 30, 3);
+	gluDisk(quadObj, 0, sidelength / 2 - 0.5f, 30, 3);
 	glPopMatrix();
 
 	glTranslatef(0, baseCylHeight, 0);
 	glPushMatrix();
 	glPushMatrix();
-	glScalef(sidelength / 2. - 0.7, sidelength / 2. - 0.7, 0.75/2);
+	glScalef(sidelength / 2.f - 0.7f, sidelength / 2.f - 0.7f, 0.75f/2);
 	glutSolidCube(2);
 	glPopMatrix();
-	glTranslatef(0, sidelength / 2. - 0.7, -0.75/2);
-	gluCylinder(quadObj, sidelength / 2. - 0.7, sidelength / 2. - 0.7, 0.75, 40, 3);
+	glTranslatef(0, sidelength / 2.f - 0.7f, -0.75f/2);
+	gluCylinder(quadObj, sidelength / 2.f - 0.7f, sidelength / 2.f - 0.7f, 0.75f, 40, 3);
 	glPushMatrix();
 	glRotatef(180, 0, 1,0 );
-	gluDisk(quadObj, 0, sidelength / 2 - 0.7, 40, 3);
+	gluDisk(quadObj, 0, sidelength / 2 - 0.7f, 40, 3);
 	glPopMatrix();
-	glTranslatef(0, 0, 0.75);
-	gluDisk(quadObj, 0, sidelength / 2 - 0.7, 40, 3);
+	glTranslatef(0, 0, 0.75f);
+	gluDisk(quadObj, 0, sidelength / 2 - 0.7f, 40, 3);
 	glPopMatrix();
 
-	glTranslatef(0, sidelength / 2. - 0.7, 0);
+	glTranslatef(0, sidelength / 2.f - 0.7f, 0);
 	glPushMatrix();
 	glTranslatef(0,0,-1);
-	gluCylinder(quadObj, 0.75,0.75, 2, 30, 3);
+	gluCylinder(quadObj, 0.75f,0.75f, 2, 30, 3);
 	glPopMatrix();
 
 	glRotatef(armAngle1, 0, 0, 1);
 	//arm segment 1
 	glPushMatrix();
 	glTranslatef(0,armLength1/2,1);
-	glScalef(2,armLength1+2,0.75);
+	glScalef(2,armLength1+2,0.75f);
 	glutSolidCube(1);
 	glPopMatrix();
 	glPushMatrix();
 	glTranslatef(0,armLength1/2,-1);
-	glScalef(2,armLength1+2,0.75);
+	glScalef(2,armLength1+2,0.75f);
 	glutSolidCube(1);
 	glPopMatrix();
 
@@ -90,11 +90,11 @@ void Robot::Render()
 
 	glPushMatrix();
 	glTranslatef(0,0,-1);
-	gluCylinder(quadObj, 0.75,0.75, 2, 30, 3);
+	gluCylinder(quadObj, 0.75f,0.75f, 2, 30, 3);
 	glPopMatrix();
 	glPushMatrix();
 	glTranslatef(0,(armLength2-1)/2,0);
-	glScalef(2,armLength2+1,0.75);
+	glScalef(2,armLength2+1,0.75f);
 	glutSolidCube(1);
 	glPopMatrix();
 
@@ -186,15 +186,15 @@ void Robot::setAngles(float core, float arm1, float arm2)
 void Robot::setPos(float x, float y , float z)
 {
 	float y_prime = y - axisHeight;
-	float r = pow(pow(x, 2)+ pow( z, 2), 0.5);
+	float r = pow(pow(x, 2)+ pow( z, 2), 0.5f);
 	float d_squared = pow(y_prime, 2) + pow(r, 2);
 	float d_angle = atan(y_prime/r);
-	float theta_prime = acos((pow(armLength2, 2) - pow(armLength1, 2) - d_squared)/(-2*armLength1*pow(d_squared, 0.5)));
+	float theta_prime = acos((pow(armLength2, 2) - pow(armLength1, 2) - d_squared)/(-2*armLength1*pow(d_squared, 0.5f)));
 	float theta = PI/2 - d_angle - theta_prime;
 	float phi = PI - acos((d_squared - pow(armLength1,2) - pow(armLength2, 2))/(-2*armLength1*armLength2));
 	float gamma = atan(z/x) + (z<0 && x<0 ? PI : 0);
 
-	coreAngleTarget = gamma / PI * 180.;
-	armAngle1Target = theta / PI * 180.;
-	armAngle2Target = phi / PI * 180.;
+	coreAngleTarget = gamma / PI * 180.f;
+	armAngle1Target = theta / PI * 180.f;
+	armAngle2Target = phi / PI * 180.f;
 }

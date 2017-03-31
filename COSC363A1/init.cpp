@@ -34,7 +34,7 @@ void initialize()
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(60, 1, .01, 10000);  //The camera view volume  
+	gluPerspective(60, 1, .01f, 10000);  //The camera view volume  
 
 	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
 	glEnable(GL_COLOR_MATERIAL);

@@ -23,7 +23,7 @@ void frameProcesses(int number)
 	high_resolution_clock::time_point now = high_resolution_clock::now();
 	double dt = duration_cast<duration<double>>(now - myTiming::last).count();
 	myTiming::last = now;
-	//std::cout << "Frame time: " << dt << "\tFPS:" << 1. / dt << "\n";
+	//std::cout << "Frame time: " << dt << "\tFPS:" << 1.f / dt << "\n";
 
 	camSmoothingStep(dt);
 	cameraProcesses(dt);
@@ -79,34 +79,34 @@ void cameraProcesses(float dt)
 	if (isKeyDown('a'))
 	{
 		float multiplied[3];
-		multiplied[0] = -cos(angles[0] / 180.*PI) * unitPerSec * dt;
-		multiplied[2] = -sin(angles[0] / 180.*PI) * unitPerSec * dt;
+		multiplied[0] = -cos(angles[0] / 180.f*PI) * unitPerSec * dt;
+		multiplied[2] = -sin(angles[0] / 180.f*PI) * unitPerSec * dt;
 		multiplied[1] = 0.f;
 		camSetPos(multiplied, 1, 1);
 	}
 	if (isKeyDown('d'))
 	{
 		float multiplied[3];
-		multiplied[0] = cos(angles[0] / 180.*PI) * unitPerSec * dt;
-		multiplied[2] = sin(angles[0] / 180.*PI) * unitPerSec * dt;
+		multiplied[0] = cos(angles[0] / 180.f*PI) * unitPerSec * dt;
+		multiplied[2] = sin(angles[0] / 180.f*PI) * unitPerSec * dt;
 		multiplied[1] = 0.f;
 		camSetPos(multiplied, 1, 1);
 	}
 	if (isKeyDown('q'))
 	{
 		float multiplied[3];
-		multiplied[0] = -sin(angles[0] / 180.*PI) * sin(angles[1] / 180.*PI) * unitPerSec * dt;
-		multiplied[2] = cos(angles[0] / 180.*PI) * sin(angles[1] / 180.*PI) * unitPerSec * dt;
-		multiplied[1] = cos(angles[1] / 180.*PI) * unitPerSec * dt;
+		multiplied[0] = -sin(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI) * unitPerSec * dt;
+		multiplied[2] = cos(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI) * unitPerSec * dt;
+		multiplied[1] = cos(angles[1] / 180.f*PI) * unitPerSec * dt;
 		camSetPos(multiplied, 1, 1);
 	}
 	if (isKeyDown('e'))
 	{
 
 		float multiplied[3];
-		multiplied[0] = sin(angles[0] / 180.*PI) * sin(angles[1] / 180.*PI) * unitPerSec * dt;
-		multiplied[2] = -cos(angles[0] / 180.*PI) * sin(angles[1] / 180.*PI) * unitPerSec * dt;
-		multiplied[1] = -cos(angles[1] / 180.*PI) * unitPerSec * dt;
+		multiplied[0] = sin(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI) * unitPerSec * dt;
+		multiplied[2] = -cos(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI) * unitPerSec * dt;
+		multiplied[1] = -cos(angles[1] / 180.f*PI) * unitPerSec * dt;
 		camSetPos(multiplied, 1, 1);
 	}
 	//std::cout << direction[0] << "\t" << direction[1] << "\t" << direction[2] << "\n";

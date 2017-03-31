@@ -5,7 +5,7 @@
 class Robot :
 	public SceneObject
 {
-	const float axisHeight = 2.8; //determined by the height of the first arms axis of rotation above 0
+	const float axisHeight = 2.8f; //determined by the height of the first arms axis of rotation above 0
 	float coreAngle = 0;
 	float coreAngleTarget = 0;
 	float armAngle1 = 0;
