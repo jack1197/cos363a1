@@ -3,10 +3,8 @@
 #include <fstream>
 #include <sstream>
 
-ObjMesh::ObjMesh(std::string fileName, float color[4])
+ObjMesh::ObjMesh(std::string fileName)
 {
-	for (int i = 0; i < 4; i++)
-		this->color[i] = color[i];
 	std::ifstream file;
 	file.open(fileName);
 	std::string line;
@@ -64,10 +62,6 @@ ObjMesh::~ObjMesh()
 
 void ObjMesh::Render()
 {
-	float spec_colour[3] = { .8f, .8f, .8f };
-	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
-	glMaterialf(GL_FRONT, GL_SHININESS, 2);
-	glColor4fv(color);
 	glEnable(GL_AUTO_NORMAL);
 	glBegin(GL_TRIANGLES);
 	for (int *face : faces)
