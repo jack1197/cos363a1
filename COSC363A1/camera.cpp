@@ -10,8 +10,8 @@ namespace MyCamera
 	float camSetTarget[3] = { 0,0,0 };
 	float camCurrentUp[3] = { 0,1,0 };
 	float camSetUp[3] = { 0,1,0 };
-	float camCurrentAngle[2] = {0, 0};
-	float camSetAngle[2] = {0, 0};
+	float camCurrentAngle[2] = { 0, 0 };
+	float camSetAngle[2] = { 0, 0 };
 	float camTargetTime = 0.0f;
 	float camPosTime = 0.0f;
 	float camUpTime = 0.0f;
@@ -24,17 +24,17 @@ void cameraMatrix()
 {
 	if (MyCamera::targetMode)
 	{
-		gluLookAt(MyCamera::camCurrentPosition[0], MyCamera::camCurrentPosition[1], MyCamera::camCurrentPosition[2], 
-			MyCamera::camCurrentTarget[0], MyCamera::camCurrentTarget[1], MyCamera::camCurrentTarget[2], 
+		gluLookAt(MyCamera::camCurrentPosition[0], MyCamera::camCurrentPosition[1], MyCamera::camCurrentPosition[2],
+			MyCamera::camCurrentTarget[0], MyCamera::camCurrentTarget[1], MyCamera::camCurrentTarget[2],
 			MyCamera::camCurrentUp[0], MyCamera::camCurrentUp[1], MyCamera::camCurrentUp[2]);
 	}
 	else
 	{
-		glRotatef(-MyCamera::camCurrentAngle[1], 1,0,0);
-		glRotatef(MyCamera::camCurrentAngle[0], 0,1,0);
+		glRotatef(-MyCamera::camCurrentAngle[1], 1, 0, 0);
+		glRotatef(MyCamera::camCurrentAngle[0], 0, 1, 0);
 		gluLookAt(MyCamera::camCurrentPosition[0], MyCamera::camCurrentPosition[1], MyCamera::camCurrentPosition[2],
-		MyCamera::camCurrentPosition[0], MyCamera::camCurrentPosition[1], MyCamera::camCurrentPosition[2]-1,
-		MyCamera::camCurrentUp[0], MyCamera::camCurrentUp[1], MyCamera::camCurrentUp[2]);
+			MyCamera::camCurrentPosition[0], MyCamera::camCurrentPosition[1], MyCamera::camCurrentPosition[2] - 1,
+			MyCamera::camCurrentUp[0], MyCamera::camCurrentUp[1], MyCamera::camCurrentUp[2]);
 	}
 
 }
@@ -61,7 +61,7 @@ void camSetTarget(float point[3], bool snap, bool relative)
 	}
 	if (snap || MyCamera::camPosTime == 0.0f)
 	{
-		memcpy(MyCamera::camCurrentTarget, MyCamera::camSetTarget, 3*sizeof(float));
+		memcpy(MyCamera::camCurrentTarget, MyCamera::camSetTarget, 3 * sizeof(float));
 	}
 }
 
@@ -72,12 +72,12 @@ void camSetPos(float point[3], bool snap, bool relative)
 {
 	if (relative)
 	{
-		for (int i = 0;i < 3; i++)
+		for (int i = 0; i < 3; i++)
 			MyCamera::camSetPosition[i] += point[i];
 	}
 	else
 	{
-		memcpy(MyCamera::camSetPosition,point, 3 * sizeof(float));
+		memcpy(MyCamera::camSetPosition, point, 3 * sizeof(float));
 	}
 	if (snap || MyCamera::camPosTime == 0.0f)
 	{
@@ -148,7 +148,7 @@ void camSetUp(float x, float y, float z, bool snap, bool relative)
 /*
 set smoothing times
 */
-void camSetSmoothing(float targetTime, float posTime, float upTime) 
+void camSetSmoothing(float targetTime, float posTime, float upTime)
 {
 	MyCamera::camTargetTime = targetTime;
 	MyCamera::camPosTime = posTime;
@@ -179,7 +179,7 @@ void camGetDirection(float output[3])
 
 void camGetDirection(float output[3], bool targetMode)
 {
-	output[0] = float(sin(MyCamera::camSetAngle[0]/180.f*PI) * cos(MyCamera::camSetAngle[1]/180.f*PI));
-	output[1] = float(sin(MyCamera::camSetAngle[1]/180.f*PI));
-	output[2] = float(-cos(MyCamera::camSetAngle[0]/180.f*PI) * cos(MyCamera::camSetAngle[1]/180.f*PI));
+	output[0] = float(sin(MyCamera::camSetAngle[0] / 180.f*PI) * cos(MyCamera::camSetAngle[1] / 180.f*PI));
+	output[1] = float(sin(MyCamera::camSetAngle[1] / 180.f*PI));
+	output[2] = float(-cos(MyCamera::camSetAngle[0] / 180.f*PI) * cos(MyCamera::camSetAngle[1] / 180.f*PI));
 }

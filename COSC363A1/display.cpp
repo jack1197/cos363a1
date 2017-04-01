@@ -21,9 +21,9 @@ void render()
 	float lightpos1[4] = { -25.f, 80.f, -25.f, 1.0f };
 	float lightpos2[4] = { -25.f, 80.f, 25.f, 1.0f };
 	float lightpos3[4] = { 25.f, 80.f, 25.f, 1.0f };
-	float lightspec[4] = { 1.f, 1.f, 1.f, 1.f};
-	float lightdiff[4] = { 1.f, 1.f, 1.f, 1.0f};
-	float spotdir[3] = { 0.f, -1.f, 0.f};
+	float lightspec[4] = { 1.f, 1.f, 1.f, 1.f };
+	float lightdiff[4] = { 1.f, 1.f, 1.f, 1.0f };
+	float spotdir[3] = { 0.f, -1.f, 0.f };
 	glLightfv(GL_LIGHT0, GL_POSITION, lightpos0);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, lightspec);
 	glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, spotdir);

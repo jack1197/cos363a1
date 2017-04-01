@@ -46,7 +46,7 @@ void cameraProcesses(float dt)
 	camGetAngles(angles);
 	if (isSpecialDown(GLUT_KEY_UP))
 	{
-		camSetAngle(0,degPerSec*dt, 1, 1);
+		camSetAngle(0, degPerSec*dt, 1, 1);
 	}
 	if (isSpecialDown(GLUT_KEY_DOWN))
 	{
@@ -55,24 +55,24 @@ void cameraProcesses(float dt)
 	}
 	if (isSpecialDown(GLUT_KEY_LEFT))
 	{
-		camSetAngle(-degPerSec*dt, 0,1, 1);
+		camSetAngle(-degPerSec*dt, 0, 1, 1);
 
 	}
 	if (isSpecialDown(GLUT_KEY_RIGHT))
 	{
-		camSetAngle(degPerSec*dt, 0,1, 1);
+		camSetAngle(degPerSec*dt, 0, 1, 1);
 	}
 	if (isKeyDown('w'))
 	{
 		float multiplied[3];
-		for (int i = 0;i < 3; i++)
+		for (int i = 0; i < 3; i++)
 			multiplied[i] = direction[i] * unitPerSec * dt;
 		camSetPos(multiplied, 1, 1);
 	}
 	if (isKeyDown('s'))
 	{
 		float multiplied[3];
-		for (int i = 0;i < 3; i++)
+		for (int i = 0; i < 3; i++)
 			multiplied[i] = direction[i] * unitPerSec * dt * -1;
 		camSetPos(multiplied, 1, 1);
 	}

@@ -1,5 +1,5 @@
 #pragma once
-class SceneObject{
+class SceneObject {
 
 public:
 	virtual void Render();
