@@ -22,6 +22,7 @@ Mobile::Mobile(state State)
 		board = new ObjMesh("board.obj");
 		chip = new ObjMesh("chip.obj");
 	}
+	CurrentState = State;
 }
 
 
@@ -42,42 +43,42 @@ Mobile::~Mobile()
 
 void Mobile::Render()
 {
-	float spec_colour[3] = { .8f, .8f, .8f };
+	float spec_colour[3] = { .3f, .3f, .3f };
 	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
 	glMaterialf(GL_FRONT, GL_SHININESS, 2);
 	if (CurrentState & Back)
 	{
-		glColor3fv(colors[0]);
+		glColor4fv(colors[0]);
 		back->Render();
 	}
 	if (CurrentState & Front) 
 	{ 
-		glColor3fv(colors[1]);
+		glColor4fv(colors[1]);
 		front->Render();
 	}
 	if (CurrentState & Board)
 	{
-		glColor3fv(colors[2]);
+		glColor4fv(colors[2]);
 		board->Render();
 	}
 	if (CurrentState & Chip) 
 	{
-		glColor3fv(colors[3]);
+		glColor4fv(colors[3]);
 		chip->Render();
 	}
 	if (CurrentState & Screen)
 	{ 
-		glColor3fv(colors[4]);
+		glColor4fv(colors[4]);
 		screen->Render();
 	}
 	if (CurrentState & Antenna) 
 	{
-		glColor3fv(colors[5]);
+		glColor4fv(colors[5]);
 		antenna->Render();
 	}
 	if (CurrentState & Keys) 
 	{
-		glColor3fv(colors[6]);
+		glColor4fv(colors[6]);
 		keys->Render();
 	}
 }

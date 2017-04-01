@@ -3,7 +3,7 @@
 #include "texture.h"
 #include "conveyor.h"
 #include "robot.h"
-#include "mesh.h"
+#include "Mobile.h"
 
 class Factory :
 	public SceneObject
@@ -14,13 +14,7 @@ class Factory :
 	void concreteFloor(int subdivisions, int repetitions);
 	void brickWall(int subdivisions, int repetitions);
 	void subdividedSurface(int subdivisions, int repetitions, float v_stretch);
-	ObjMesh *thing;
-	ObjMesh *thing1;
-	ObjMesh *thing2;
-	ObjMesh *thing3;
-	ObjMesh *thing4;
-	ObjMesh *thing5;
-	ObjMesh *thing6;
+	Mobile *mobile;
 
 public:
 	Factory();
