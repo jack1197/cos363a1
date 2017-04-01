@@ -9,7 +9,7 @@ Conveyor::~Conveyor()
 {
 }
 
-void Conveyor::Process(double dt)
+void Conveyor::Process(float dt)
 {
     float cyclesPerSec = 2.f;
     if (cyclesPerSec > 0)

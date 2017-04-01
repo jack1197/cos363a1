@@ -9,6 +9,6 @@ public:
 	Conveyor();
 	~Conveyor();
 	virtual void Render();
-	virtual void Process(double dt);
+	virtual void Process(float dt);
 };
 

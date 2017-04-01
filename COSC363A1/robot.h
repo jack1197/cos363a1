@@ -15,12 +15,12 @@ class Robot :
 	float armAngle2Target = 0;
 	float armLength2;
 	double time = 0;
-	void movementStep(double dt);
+	void movementStep(float dt);
 public:
 	Robot(float armLength1, float armLength2);
 	~Robot();
 	virtual void Render();
-	virtual void Process(double dt);
+	virtual void Process(float dt);
 	void setAngles(float core, float arm1, float arm2);
 	void setPos(float x, float y, float z);
 };

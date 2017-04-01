@@ -71,7 +71,7 @@ void Factory::Render()
     thing6->Render();
 }
 
-void Factory::Process(double dt)
+void Factory::Process(float dt)
 {
     conveyor->Process(dt);
     robot1->Process(dt);

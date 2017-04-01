@@ -6,7 +6,7 @@ void SceneObject::Render()
     
 }
 
-void SceneObject::Process(double dt)
+void SceneObject::Process(float dt)
 {
 
 }

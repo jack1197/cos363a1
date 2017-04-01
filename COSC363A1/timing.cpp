@@ -21,7 +21,7 @@ void timerInit()
 void frameProcesses(int number)
 {
 	high_resolution_clock::time_point now = high_resolution_clock::now();
-	double dt = duration_cast<duration<double>>(now - myTiming::last).count();
+	float dt = duration_cast<duration<float>>(now - myTiming::last).count();
 	myTiming::last = now;
 	//std::cout << "Frame time: " << dt << "\tFPS:" << 1.f / dt << "\n";
 

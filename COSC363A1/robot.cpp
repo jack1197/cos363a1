@@ -104,7 +104,7 @@ void Robot::Render()
 	glPopMatrix();
 }
 
-void Robot::movementStep(double dt)
+void Robot::movementStep(float dt)
 {
 const float coreAnglePerSec = 80;
 	const float arm1AnglePerSec = 45;
@@ -161,7 +161,7 @@ const float coreAnglePerSec = 80;
 	}
 }
 
-void Robot::Process(double dt)
+void Robot::Process(float dt)
 {
 	time += dt;
 	movementStep(dt);
