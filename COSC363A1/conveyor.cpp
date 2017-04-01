@@ -14,11 +14,11 @@ void Conveyor::Process(float dt)
     float cyclesPerSec = 2.f;
     if (cyclesPerSec > 0)
     {
-        cycleProgress = fmod(cycleProgress + cyclesPerSec * dt, 1);
+        cycleProgress = float(fmod(cycleProgress + cyclesPerSec * dt, 1));
     }
     else
     {
-        cycleProgress = fmod((cycleProgress - 1) + dt * cyclesPerSec, 1) + 1;
+        cycleProgress = float(fmod((cycleProgress - 1) + dt * cyclesPerSec, 1)) + 1;
     }
 }
 

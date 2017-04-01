@@ -79,34 +79,34 @@ void cameraProcesses(float dt)
 	if (isKeyDown('a'))
 	{
 		float multiplied[3];
-		multiplied[0] = -cos(angles[0] / 180.f*PI) * unitPerSec * dt;
-		multiplied[2] = -sin(angles[0] / 180.f*PI) * unitPerSec * dt;
+		multiplied[0] = float(-cos(angles[0] / 180.f*PI)) * unitPerSec * dt;
+		multiplied[2] = float(-sin(angles[0] / 180.f*PI)) * unitPerSec * dt;
 		multiplied[1] = 0.f;
 		camSetPos(multiplied, 1, 1);
 	}
 	if (isKeyDown('d'))
 	{
 		float multiplied[3];
-		multiplied[0] = cos(angles[0] / 180.f*PI) * unitPerSec * dt;
-		multiplied[2] = sin(angles[0] / 180.f*PI) * unitPerSec * dt;
+		multiplied[0] = float(cos(angles[0] / 180.f*PI)) * unitPerSec * dt;
+		multiplied[2] = float(sin(angles[0] / 180.f*PI)) * unitPerSec * dt;
 		multiplied[1] = 0.f;
 		camSetPos(multiplied, 1, 1);
 	}
 	if (isKeyDown('q'))
 	{
 		float multiplied[3];
-		multiplied[0] = -sin(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI) * unitPerSec * dt;
-		multiplied[2] = cos(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI) * unitPerSec * dt;
-		multiplied[1] = cos(angles[1] / 180.f*PI) * unitPerSec * dt;
+		multiplied[0] = float(-sin(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI)) * unitPerSec * dt;
+		multiplied[2] = float(cos(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI)) * unitPerSec * dt;
+		multiplied[1] = float(cos(angles[1] / 180.f*PI)) * unitPerSec * dt;
 		camSetPos(multiplied, 1, 1);
 	}
 	if (isKeyDown('e'))
 	{
 
 		float multiplied[3];
-		multiplied[0] = sin(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI) * unitPerSec * dt;
-		multiplied[2] = -cos(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI) * unitPerSec * dt;
-		multiplied[1] = -cos(angles[1] / 180.f*PI) * unitPerSec * dt;
+		multiplied[0] = float(sin(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI)) * unitPerSec * dt;
+		multiplied[2] = float(-cos(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI)) * unitPerSec * dt;
+		multiplied[1] = float(-cos(angles[1] / 180.f*PI)) * unitPerSec * dt;
 		camSetPos(multiplied, 1, 1);
 	}
 	//std::cout << direction[0] << "\t" << direction[1] << "\t" << direction[2] << "\n";

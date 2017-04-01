@@ -7,7 +7,7 @@ Factory::Factory()
     wallTex = new Texture("TexturesCom_BrickSmallBrown0270_1_seamless_S.tga", "TGA");
     conveyor = new Conveyor();
 	robot1 = new Robot(7,7);
-	float color[4] = {.8f,.8,.8f,1.f};
+	float color[4] = {.8f,.8f,.8f,1.f};
 	thing = new ObjMesh("front.obj" , color);
 	thing1 = new ObjMesh("back.obj" , color);
 	thing2 = new ObjMesh("screen.obj" , color);

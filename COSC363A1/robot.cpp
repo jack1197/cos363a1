@@ -24,7 +24,7 @@ void Robot::Render()
 	float baseCylHeight = 1.f;
 	GLUquadric *quadObj = gluNewQuadric();
 
-	glColor4f(.8f,.8,.4f, 1);
+	glColor4f(.8f,.8f,.4f, 1.f);
 	float spec_colour[3] = { .8f, .8f, .4f };
 	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
 	glMaterialf(GL_FRONT, GL_SHININESS, 2);
@@ -110,7 +110,7 @@ const float coreAnglePerSec = 80;
 	const float arm1AnglePerSec = 45;
 	const float arm2AnglePerSec = 80;
 
-	float coreError = remainder(coreAngle - coreAngleTarget, 360);
+	float coreError = float(remainder(coreAngle - coreAngleTarget, 360));
 	float arm1Error = armAngle1 - armAngle1Target;
 	float arm2Error = armAngle2 - armAngle2Target;
 	//std::cout<<"coreError: "<<coreError<<"\ttarget: "<<coreAngleTarget<<"\tcurrent: "<<coreAngle<<"\n";
@@ -118,14 +118,14 @@ const float coreAnglePerSec = 80;
 	if (coreError > 0)
 	{
 		coreAngle -= coreAnglePerSec * dt;
-		coreError = remainder(coreAngle - coreAngleTarget, 360);
+		coreError = float(remainder(coreAngle - coreAngleTarget, 360));
 		if (coreError < 0)
 		coreAngle = coreAngleTarget;
 	}
 	else if (coreError < 0)
 	{
 		coreAngle += coreAnglePerSec * dt;
-		coreError = remainder(coreAngle - coreAngleTarget, 360);
+		coreError = float(remainder(coreAngle - coreAngleTarget, 360));
 		if (coreError > 0)
 		coreAngle = coreAngleTarget;
 	}
@@ -190,11 +190,11 @@ void Robot::setPos(float x, float y , float z)
 	float d_squared = pow(y_prime, 2) + pow(r, 2);
 	float d_angle = atan(y_prime/r);
 	float theta_prime = acos((pow(armLength2, 2) - pow(armLength1, 2) - d_squared)/(-2*armLength1*pow(d_squared, 0.5f)));
-	float theta = PI/2 - d_angle - theta_prime;
-	float phi = PI - acos((d_squared - pow(armLength1,2) - pow(armLength2, 2))/(-2*armLength1*armLength2));
-	float gamma = atan(z/x) + (z<0 && x<0 ? PI : 0);
+	float theta = float(PI)/2 - d_angle - theta_prime;
+	float phi = float(PI - acos((d_squared - pow(armLength1,2) - pow(armLength2, 2))/(-2*armLength1*armLength2)));
+	float gamma = float(atan(z/x) + (z<0 && x<0 ? PI : 0));
 
-	coreAngleTarget = gamma / PI * 180.f;
-	armAngle1Target = theta / PI * 180.f;
-	armAngle2Target = phi / PI * 180.f;
+	coreAngleTarget = gamma / float(PI) * 180.f;
+	armAngle1Target = theta / float(PI) * 180.f;
+	armAngle2Target = phi / float(PI) * 180.f;
 }
