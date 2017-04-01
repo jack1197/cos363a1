@@ -60,6 +60,9 @@
     <ClCompile Include="mesh.cpp">
       <Filter>Source Files\MyObjects</Filter>
     </ClCompile>
+    <ClCompile Include="Mobile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -106,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="mesh.h">
       <Filter>Header Files\MyObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Mobile.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

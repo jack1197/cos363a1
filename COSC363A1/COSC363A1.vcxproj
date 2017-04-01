@@ -123,6 +123,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="mesh.cpp" />
+    <ClCompile Include="Mobile.cpp" />
     <ClCompile Include="robot.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="timing.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="loadBMP.h" />
     <ClInclude Include="loadTGA.h" />
     <ClInclude Include="mesh.h" />
+    <ClInclude Include="Mobile.h" />
     <ClInclude Include="robot.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="timing.h" />
