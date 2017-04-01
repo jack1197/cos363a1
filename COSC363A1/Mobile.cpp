@@ -12,7 +12,8 @@ ObjMesh *Mobile::antenna = nullptr;
 
 Mobile::Mobile(state State)
 {
-	if (++objCounter == 1)
+	++objCounter;
+	if (objCounter == 1)
 	{
 		front = new ObjMesh("front.obj");
 		back = new ObjMesh("back.obj");
@@ -28,7 +29,8 @@ Mobile::Mobile(state State)
 
 Mobile::~Mobile()
 {
-	if (--objCounter == 0)
+	--objCounter;
+	if (objCounter == 0)
 	{
 		delete front;
 		delete back;
@@ -46,44 +48,35 @@ void Mobile::Render()
 	float spec_colour[3] = { .3f, .3f, .3f };
 	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
 	glMaterialf(GL_FRONT, GL_SHININESS, 2);
-	if (CurrentState & Back)
+
+	state baseStates[] = { Back,Front,  Board, Chip, Screen, Antenna, Keys };
+	ObjMesh *mesh[] = { back, front, board, chip, screen, antenna, keys };
+	for (int i = 0; i < 7; i++)
 	{
-		glColor4fv(colors[0]);
-		back->Render();
-	}
-	if (CurrentState & Front) 
-	{ 
-		glColor4fv(colors[1]);
-		front->Render();
-	}
-	if (CurrentState & Board)
-	{
-		glColor4fv(colors[2]);
-		board->Render();
-	}
-	if (CurrentState & Chip) 
-	{
-		glColor4fv(colors[3]);
-		chip->Render();
-	}
-	if (CurrentState & Screen)
-	{ 
-		glColor4fv(colors[4]);
-		screen->Render();
-	}
-	if (CurrentState & Antenna) 
-	{
-		glColor4fv(colors[5]);
-		antenna->Render();
-	}
-	if (CurrentState & Keys) 
-	{
-		glColor4fv(colors[6]);
-		keys->Render();
+		if (CurrentState & baseStates[i])
+		{
+			glColor4fv(colors[i]);
+			mesh[i]->Render();
+		}
 	}
 }
 
 void Mobile::Process(float dt)
 {
 
+}
+
+Mobile *Mobile::Combine(Mobile *combinand)
+{
+
+	Mobile *combination = new Mobile(state(CurrentState | combinand->CurrentState));
+	state baseStates[] = { Back,Front,  Board, Chip, Screen, Antenna, Keys };
+	for (int i = 0; i < 7; i++)
+	{
+		if (CurrentState & baseStates[i])
+			memcpy(colors[i], combination->colors[i], sizeof(float) * 4);
+		else
+			memcpy(combinand->colors[i], combination->colors[i], sizeof(float) * 4);
+	}
+	return combination;
 }

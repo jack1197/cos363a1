@@ -44,7 +44,7 @@ private:
 public:
 	Mobile(state State);
 	~Mobile();
-	Mobile Combine(Mobile combinand);
+	Mobile *Combine(Mobile *combinand);
 	virtual void Render();
 	virtual void Process(float dt);
 };

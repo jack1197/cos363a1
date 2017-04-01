@@ -7,7 +7,10 @@ Factory::Factory()
 	wallTex = new Texture("TexturesCom_BrickSmallBrown0270_1_seamless_S.tga", "TGA");
 	conveyor = new Conveyor();
 	robot1 = new Robot(7, 7);
-	mobile = new Mobile(Mobile::Full);
+	Mobile a(Mobile::BackAndBoard);
+	Mobile b(Mobile::FrontAssembly);
+	
+	mobile = a.Combine(&b);// new Mobile(Mobile::Full);
 
 }
 
