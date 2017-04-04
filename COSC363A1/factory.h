@@ -11,6 +11,10 @@ class Factory :
 	Texture *floorTex, *wallTex;
 	Conveyor *conveyor;
 	Robot *robot1;
+	Robot *robot2;
+	Robot *robot3;
+	Robot *robot4;
+	Robot *robot5;
 	void concreteFloor(int subdivisions, int repetitions);
 	void brickWall(int subdivisions, int repetitions);
 	void subdividedSurface(int subdivisions, int repetitions, float v_stretch);

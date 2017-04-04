@@ -17,6 +17,8 @@ class Robot :
 	double time = 0;
 	void movementStep(float dt);
 public:
+	SceneObject *attached = nullptr;
+	float attachedOffset[3];
 	Robot(float armLength1, float armLength2);
 	~Robot();
 	virtual void Render();

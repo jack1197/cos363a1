@@ -99,7 +99,11 @@ void Robot::Render()
 	glPopMatrix();
 
 	glTranslatef(0, armLength2, 0);
-
+	if (attached)
+	{
+	glTranslatef(attachedOffset[0], attachedOffset[1], attachedOffset[2]);
+	attached->Render();
+	}
 
 	glPopMatrix();
 }

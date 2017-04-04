@@ -7,6 +7,10 @@ Factory::Factory()
 	wallTex = new Texture("TexturesCom_BrickSmallBrown0270_1_seamless_S.tga", "TGA");
 	conveyor = new Conveyor();
 	robot1 = new Robot(7, 7);
+	robot2 = new Robot(7, 7);
+	robot3 = new Robot(7, 7);
+	robot4 = new Robot(7, 7);
+	robot5 = new Robot(7, 7);
 
 	for (int i = 0; i<mobilesOnBelt; i++)
 	{
@@ -63,15 +67,30 @@ void Factory::Render()
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(0, 7, 5.5f);
+	glTranslatef(-28, 7, 5.5f);
 	robot1->Render();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(-14, 7, -5.5f);
+	robot2->Render();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(0, 7, 5.5f);
+	robot3->Render();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(14, 7, -5.5f);
+	robot4->Render();
+	glPopMatrix();
+	glPushMatrix();
+	glTranslatef(28, 7, 5.5f);
+	robot5->Render();
 	glPopMatrix();
 
 	for (int i = 0; i<mobilesOnBelt; i++)
 	{
 		glPushMatrix();
 		glTranslatef(-40.0f+i*12+cyclepos*2.4f, 6.0f, 0);
-		std::cout<<mobiles[i]<<"\n";
 		mobiles[i]->Render();
 		glPopMatrix();
 	}
@@ -88,10 +107,12 @@ void Factory::Process(float dt)
 	if (cyclepos > cyclelen)
 	{
 		cyclepos -= cyclelen;	
-		delete mobiles[mobilesOnBelt-1];
+		delete robot1->attached;
+
+		robot1->attached = mobiles[mobilesOnBelt-1];
+
 		memcpy(&mobiles[1], mobiles, sizeof(void*)*(mobilesOnBelt-1));
 		mobiles[0] = new Mobile(Mobile::BackAssembly);
-		std::cout<<"3\n";
 	}
 }
 
