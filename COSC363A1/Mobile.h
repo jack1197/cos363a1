@@ -31,14 +31,13 @@ public:
 		Full = FrontAssembly | BackAssembly
 	};
 	float colors[7][4] = {
-		1.0f, 1.0f, 1.0f, 1.0f,
-		0.9f, 0.9f, 0.9f, 1.0f,
-		0.2f, 1.0f, 0.2f, 1.0f,
-		0.2f, 0.2f, 0.2f, 1.0f,
-		0.6f, 0.7f, 0.6f, 1.0f,
-		0.1f, 0.1f, 0.1f, 1.0f,
-		0.5f, 0.5f, 0.5f, 1.0f,
-	};
+		{1.0f, 1.0f, 1.0f, 1.0f},
+		{0.9f, 0.9f, 0.9f, 1.0f},
+		{0.2f, 1.0f, 0.2f, 1.0f},
+		{0.2f, 0.2f, 0.2f, 1.0f},
+		{0.6f, 0.7f, 0.6f, 1.0f},
+		{0.1f, 0.1f, 0.1f, 1.0f},
+		{0.5f, 0.5f, 0.5f, 1.0f}};
 private:
 	state CurrentState;
 public:

@@ -14,7 +14,10 @@ class Factory :
 	void concreteFloor(int subdivisions, int repetitions);
 	void brickWall(int subdivisions, int repetitions);
 	void subdividedSurface(int subdivisions, int repetitions, float v_stretch);
-	Mobile *mobile;
+	const static int mobilesOnBelt = 7;
+	Mobile *mobiles[mobilesOnBelt];
+	float cyclepos = 0.0f;
+	float cyclelen = 5.0f;
 
 public:
 	Factory();
