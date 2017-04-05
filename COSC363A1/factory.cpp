@@ -143,6 +143,7 @@ void Factory::Process(float dt)
 			if(!botsList[i]->attached)
 			{
 				botsList[i]->attached = new Mobile(attachedTo[i]);
+
 			}
 			botsList[i]->setPos(0, 1,negated * -5.5f);
 			

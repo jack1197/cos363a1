@@ -48,7 +48,8 @@ void Mobile::Render()
 	float spec_colour[3] = { .3f, .3f, .3f };
 	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
 	glMaterialf(GL_FRONT, GL_SHININESS, 2);
-
+	glPushMatrix();
+	glScalef(1, 1, 1);
 	state baseStates[] = { Back,Front,  Board, Chip, Screen, Antenna, Keys };
 	ObjMesh *mesh[] = { back, front, board, chip, screen, antenna, keys };
 	for (int i = 0; i < 7; i++)
@@ -59,6 +60,7 @@ void Mobile::Render()
 			mesh[i]->Render();
 		}
 	}
+	glPopMatrix();
 }
 
 void Mobile::Process(float dt)
