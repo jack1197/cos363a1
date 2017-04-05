@@ -12,16 +12,21 @@ Factory::Factory()
 	robot4 = new Robot(7, 7);
 	robot5 = new Robot(7, 7);
 
-	for (int i = 0; i<mobilesOnBelt; i++)
-	{
-		mobiles[i] = new Mobile(Mobile::Back);
-	}
+	mobiles[0] = new Mobile(Mobile::state(Mobile::Back));
+	mobiles[1] = new Mobile(Mobile::state(Mobile::Back | Mobile::Board));
+	mobiles[2] = new Mobile(Mobile::state(Mobile::Back | Mobile::Board | Mobile::Chip));
+	mobiles[3] = new Mobile(Mobile::state(Mobile::Back | Mobile::Board | Mobile::Chip | Mobile::Screen));
+	mobiles[4] = new Mobile(Mobile::state(Mobile::Back | Mobile::Board | Mobile::Chip | Mobile::Screen | Mobile::Keys));
+	mobiles[5] = new Mobile(Mobile::state(Mobile::Back | Mobile::Board | Mobile::Chip | Mobile::Screen | Mobile::Keys));
+
 	robot1->attached = new Mobile(Mobile::Back);
 	robot2->attached = new Mobile(Mobile::Board);
 	robot3->attached = new Mobile(Mobile::Chip);
 	robot4->attached = new Mobile(Mobile::Screen);
 	robot5->attached = new Mobile(Mobile::Keys);
 
+	robot2->attachFlipped = true;
+	robot4->attachFlipped = true;
 }
 
 Factory::~Factory()
@@ -125,13 +130,11 @@ void Factory::Process(float dt)
 		{
 			if(i>0 && botsList[i]->attached)
 			{
-				std::cout<<"thing1s\n";
 				Mobile *oldmobile = mobiles[i];
 				mobiles[i] = mobiles[i]->Combine(dynamic_cast<Mobile*>(botsList[i]->attached));
 				delete botsList[i]->attached;
 				botsList[i]->attached = nullptr;
 				delete oldmobile;
-				std::cout<<"thing1e\n";
 			}
 			botsList[i]->setPos(0, 0,negated * 5.5f);
 		}
@@ -139,16 +142,14 @@ void Factory::Process(float dt)
 		{
 			if(!botsList[i]->attached)
 			{
-				std::cout<<"thing2s\n";
 				botsList[i]->attached = new Mobile(attachedTo[i]);
-				std::cout<<"thing2e\n";
 			}
 			botsList[i]->setPos(0, 0,negated * -5.5f);
 			
 		}
 		else if (adjustedCyclepos > 4.5)
 		{
-			botsList[i]->setPos(0, -1,negated * -5.5f);
+			botsList[i]->setPos(0, -0.75,negated * -5.5f);
 		}
 	}
 

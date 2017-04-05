@@ -100,11 +100,10 @@ void Robot::Render()
 	glTranslatef(0, armLength2, 0);
 	if (attached)
 	{
-						std::cout<<attached<<"thing4s\n";
-
+	glRotatef((attachFlipped ? -1 : 1) * 90,0,1,0);
+	glRotatef(180,1,0,0);
 	glTranslatef(attachedOffset[0], attachedOffset[1], attachedOffset[2]);
 	attached->Render();
-						std::cout<<"thing4e\n";
 	}
 
 	glPopMatrix();

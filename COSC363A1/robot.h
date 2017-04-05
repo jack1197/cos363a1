@@ -19,6 +19,7 @@ class Robot :
 public:
 	SceneObject *attached = nullptr;
 	float attachedOffset[3];
+	bool attachFlipped = false;
 	Robot(float armLength1, float armLength2);
 	~Robot();
 	virtual void Render();
