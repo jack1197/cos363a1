@@ -4,7 +4,6 @@
 
 Robot::Robot(float armLength1, float armLength2)
 {
-	setPos(7, -8, 8);
 	this->armLength1 = armLength1;
 	this->armLength2 = armLength2;
 }
@@ -101,8 +100,11 @@ void Robot::Render()
 	glTranslatef(0, armLength2, 0);
 	if (attached)
 	{
+						std::cout<<attached<<"thing4s\n";
+
 	glTranslatef(attachedOffset[0], attachedOffset[1], attachedOffset[2]);
 	attached->Render();
+						std::cout<<"thing4e\n";
 	}
 
 	glPopMatrix();
@@ -110,7 +112,7 @@ void Robot::Render()
 
 void Robot::movementStep(float dt)
 {
-	const float coreAnglePerSec = 80;
+	const float coreAnglePerSec = 90;
 	const float arm1AnglePerSec = 45;
 	const float arm2AnglePerSec = 80;
 
@@ -169,6 +171,7 @@ void Robot::Process(float dt)
 {
 	time += dt;
 	movementStep(dt);
+	/*
 	if (fmod(time, 10) > 5)
 	{
 		setPos(3, -1, -5);
@@ -177,6 +180,7 @@ void Robot::Process(float dt)
 	{
 		setPos(8, 5, 8);
 	}
+	*/
 }
 
 

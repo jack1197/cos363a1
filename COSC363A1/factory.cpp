@@ -16,8 +16,11 @@ Factory::Factory()
 	{
 		mobiles[i] = new Mobile(Mobile::Full);
 	}
-	delete mobiles[0];
-	mobiles[0] = new Mobile(Mobile::Full);
+	robot1->attached = new Mobile(Mobile::Back);
+	robot2->attached = new Mobile(Mobile::Board);
+	robot3->attached = new Mobile(Mobile::Chip);
+	robot4->attached = new Mobile(Mobile::Screen);
+	robot5->attached = new Mobile(Mobile::Keys);
 
 }
 
@@ -90,7 +93,7 @@ void Factory::Render()
 	for (int i = 0; i<mobilesOnBelt; i++)
 	{
 		glPushMatrix();
-		glTranslatef(-40.0f+i*12+cyclepos*2.4f, 6.0f, 0);
+		glTranslatef(-28.0f+i*12+cyclepos*2.4f, 6.0f, 0);
 		mobiles[i]->Render();
 		glPopMatrix();
 	}
@@ -102,17 +105,63 @@ void Factory::Process(float dt)
 	conveyor->Process(dt);
 
 	robot1->Process(dt);
+	robot2->Process(dt);
+	robot3->Process(dt);
+	robot4->Process(dt);
+	robot5->Process(dt);
 
 	cyclepos += dt;
+
+	Robot *botsList[] = {robot1, robot2, robot3, robot4, robot5};
+	Mobile::state attachedTo[]  = {Mobile::Back, Mobile::Board, Mobile::Chip, Mobile::Screen, Mobile::Keys};
+
+	const float timeOffsets = 0.8333333f;
+
+	for (int i = 0; i<2; i++)
+	{
+		float adjustedCyclepos = fmod(cyclepos + timeOffsets*(6-i), cyclelen);
+		float negated = i % 2 ? -1 : 1;
+		if (adjustedCyclepos < 2.3)
+		{
+			if(i>0 && botsList[i]->attached)
+			{
+				std::cout<<"thing1s\n";
+				Mobile *oldmobile = mobiles[i];
+				mobiles[i] = mobiles[i]->Combine(dynamic_cast<Mobile*>(botsList[i]->attached));
+				delete botsList[i]->attached;
+				botsList[i]->attached == nullptr;
+				delete oldmobile;
+				std::cout<<"thing1e\n";
+			}
+			botsList[i]->setPos(0, 0,negated * 5.5f);
+		}
+		else if (adjustedCyclepos > 2.3 && adjustedCyclepos < 4.5)
+		{
+			if(!botsList[i]->attached)
+			{
+				std::cout<<"thing2s\n";
+				botsList[i]->attached = new Mobile(attachedTo[i]);
+				std::cout<<"thing2e\n";
+			}
+			botsList[i]->setPos(0, 0,negated * -5.5f);
+			
+		}
+		else if (adjustedCyclepos > 4.5)
+		{
+			botsList[i]->setPos(0, -1,negated * -5.5f);
+		}
+	}
+
 	if (cyclepos > cyclelen)
 	{
 		cyclepos -= cyclelen;	
-		delete robot1->attached;
 
-		robot1->attached = mobiles[mobilesOnBelt-1];
+		delete  mobiles[mobilesOnBelt-1];
+
 
 		memcpy(&mobiles[1], mobiles, sizeof(void*)*(mobilesOnBelt-1));
-		mobiles[0] = new Mobile(Mobile::BackAssembly);
+		mobiles[0] = dynamic_cast<Mobile*>(robot1->attached);
+		robot1->attached = nullptr;
 	}
 }
 
