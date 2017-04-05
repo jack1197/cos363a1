@@ -75,23 +75,23 @@ void Factory::Render()
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(-28, 7, 5.5f);
+	glTranslatef(-28, 6.05f, 5.5f);
 	robot1->Render();
 	glPopMatrix();
 	glPushMatrix();
-	glTranslatef(-14, 7, -5.5f);
+	glTranslatef(-14, 6.05f, -5.5f);
 	robot2->Render();
 	glPopMatrix();
 	glPushMatrix();
-	glTranslatef(0, 7, 5.5f);
+	glTranslatef(0, 6.05f, 5.5f);
 	robot3->Render();
 	glPopMatrix();
 	glPushMatrix();
-	glTranslatef(14, 7, -5.5f);
+	glTranslatef(14, 6.05f, -5.5f);
 	robot4->Render();
 	glPopMatrix();
 	glPushMatrix();
-	glTranslatef(28, 7, 5.5f);
+	glTranslatef(28, 6.05f, 5.5f);
 	robot5->Render();
 	glPopMatrix();
 
@@ -136,20 +136,20 @@ void Factory::Process(float dt)
 				botsList[i]->attached = nullptr;
 				delete oldmobile;
 			}
-			botsList[i]->setPos(0, 0,negated * 5.5f);
+			botsList[i]->setPos(0, 1,negated * 5.5f);
 		}
-		else if (adjustedCyclepos > 2.3 && adjustedCyclepos < 4.5)
+		else if (adjustedCyclepos > 2.3 && adjustedCyclepos < 4.65)
 		{
 			if(!botsList[i]->attached)
 			{
 				botsList[i]->attached = new Mobile(attachedTo[i]);
 			}
-			botsList[i]->setPos(0, 0,negated * -5.5f);
+			botsList[i]->setPos(0, 1,negated * -5.5f);
 			
 		}
-		else if (adjustedCyclepos > 4.5)
+		else if (adjustedCyclepos > 4.65)
 		{
-			botsList[i]->setPos(0, -0.75,negated * -5.5f);
+			botsList[i]->setPos(0, 0,negated * -5.5f);
 		}
 	}
 
