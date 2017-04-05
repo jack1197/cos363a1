@@ -14,7 +14,7 @@ Factory::Factory()
 
 	for (int i = 0; i<mobilesOnBelt; i++)
 	{
-		mobiles[i] = new Mobile(Mobile::Full);
+		mobiles[i] = new Mobile(Mobile::Back);
 	}
 	robot1->attached = new Mobile(Mobile::Back);
 	robot2->attached = new Mobile(Mobile::Board);
@@ -117,7 +117,7 @@ void Factory::Process(float dt)
 
 	const float timeOffsets = 0.8333333f;
 
-	for (int i = 0; i<2; i++)
+	for (int i = 0; i<5; i++)
 	{
 		float adjustedCyclepos = fmod(cyclepos + timeOffsets*(6-i), cyclelen);
 		float negated = i % 2 ? -1 : 1;
@@ -129,7 +129,7 @@ void Factory::Process(float dt)
 				Mobile *oldmobile = mobiles[i];
 				mobiles[i] = mobiles[i]->Combine(dynamic_cast<Mobile*>(botsList[i]->attached));
 				delete botsList[i]->attached;
-				botsList[i]->attached == nullptr;
+				botsList[i]->attached = nullptr;
 				delete oldmobile;
 				std::cout<<"thing1e\n";
 			}
