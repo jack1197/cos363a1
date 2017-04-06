@@ -234,7 +234,7 @@ void Factory::Process(float dt)
 		float negated = i % 2 ? -1 : 1;
 		if (adjustedCyclepos < 1.8)
 		{
-			if(i>0 && botsList[i]->attached)
+			if(botsList[i]->attached) //i>0 && 
 			{
 				Mobile *oldmobile = mobiles[i];
 				mobiles[i] = mobiles[i]->Combine(dynamic_cast<Mobile*>(botsList[i]->attached));
@@ -366,11 +366,12 @@ void Factory::Process(float dt)
 
 	if (cyclepos > cyclelen)
 	{
-		cyclepos -= cyclelen;	
+		cyclepos = fmod(cyclepos, cyclelen);	
 
 		memcpy(&mobiles[1], mobiles, sizeof(void*)*(mobilesOnBelt-1));
-		mobiles[0] = dynamic_cast<Mobile*>(robot1->attached);
-		robot1->attached = nullptr;
+		mobiles[0] = new Mobile(Mobile::Back);
+		//mobiles[0] = dynamic_cast<Mobile*>(robot1->attached);
+		//robot1->attached = nullptr;
 	}
 }
 
