@@ -6,11 +6,12 @@ Factory::Factory()
 	floorTex = new Texture("TexturesCom_ConcreteBare0433_11_seamless_S.tga", "TGA");
 	wallTex = new Texture("TexturesCom_BrickSmallBrown0270_1_seamless_S.tga", "TGA");
 	conveyor = new Conveyor();
-	robot1 = new Robot(7, 7);
-	robot2 = new Robot(7, 7);
-	robot3 = new Robot(7, 7);
-	robot4 = new Robot(7, 7);
-	robot5 = new Robot(7, 7);
+	float armLengths = 7;
+	robot1 = new Robot(armLengths, armLengths);
+	robot2 = new Robot(armLengths, armLengths);
+	robot3 = new Robot(armLengths, armLengths);
+	robot4 = new Robot(armLengths, armLengths);
+	robot5 = new Robot(armLengths, armLengths);
 
 	mobiles[0] = new Mobile(Mobile::state(Mobile::Back));
 	mobiles[1] = new Mobile(Mobile::state(Mobile::Back));
@@ -71,15 +72,25 @@ void Factory::Render()
 	}
 	glPopMatrix();
 
+
 	glPushMatrix();
-	glTranslatef(19.5f, 0, 0);
-	conveyor->Render();
-	glPopMatrix();
-	glPushMatrix();
-	glTranslatef(-19, 0, 0);
+	glTranslatef(25.5f, 0, 10);
 	conveyor->Render();
 	glPopMatrix();
 
+	glPushMatrix();
+	glTranslatef(-13, 0, 10);
+	conveyor->Render();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(-8.5, 0, -12);
+	glRotatef(-90, 0 ,1,0);
+	conveyor->Render();
+	glPopMatrix();
+
+	glPushMatrix();
+	glTranslatef(0,0,10);
 	Robot *botsList[] = {robot1, robot2, robot3, robot4, robot5};
 	for(int i =0; i<5; i++)
 	{
@@ -88,6 +99,8 @@ void Factory::Render()
 		glTranslatef(-28+14*i, 6.00f-robotOffsets[i], negated * 5.5f);
 		botsList[i]->Render();
 		glPopMatrix();
+		if(i!=2)
+		{
 		glPushMatrix();
 		glColor3f(165./255., 136./255., 85./255.);
 		float spec_colour[3] = {165./255./4., 136./255./4., 85./255./4.};
@@ -96,6 +109,7 @@ void Factory::Render()
 		glTranslatef(-28+14*i, 2.5f, negated * 11.0f);
 		glutSolidCube(5);
 		glPopMatrix();
+		}
 	}
 
 	for (int i = 0; i<mobilesOnBelt; i++)
@@ -105,6 +119,8 @@ void Factory::Render()
 		mobiles[i]->Render();
 		glPopMatrix();
 	}
+
+	glPopMatrix();
 
 }
 
@@ -139,11 +155,17 @@ void Factory::Process(float dt)
 				botsList[i]->attached = nullptr;
 				delete oldmobile;
 			}
+			if(i!=1)
 			botsList[i]->setPos(0, 1,negated * 5.5f);
+			else
+			botsList[i]->setPos(5.5f, 1,0);
 		}
 		else if (adjustedCyclepos > 1.8 && adjustedCyclepos < 2.3)
 		{
+			if(i!=1)
 			botsList[i]->setPos(0, -3,negated * 5.5f);
+			else
+			botsList[i]->setPos(5.5f, 0,0);
 		}
 		else if (adjustedCyclepos > 2.3 && adjustedCyclepos < 2.8)
 		{
@@ -152,7 +174,10 @@ void Factory::Process(float dt)
 				botsList[i]->attached = new Mobile(attachedTo[i]);
 
 			}
+			if(i!=1)
 			botsList[i]->setPos(0, 1,negated * 5.5f);
+			else
+			botsList[i]->setPos(5.5f, 1,0);
 		}
 		else if (adjustedCyclepos > 2.8 && adjustedCyclepos < 4.85)
 		{

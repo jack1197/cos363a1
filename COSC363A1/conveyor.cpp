@@ -90,7 +90,6 @@ void Conveyor::Render()
 		glPopMatrix();
 
 	}
-
 	glPopMatrix();
 }
 
