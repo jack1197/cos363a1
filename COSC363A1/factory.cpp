@@ -336,13 +336,20 @@ void Factory::Process(float dt)
 	}
 
 	if (cyclepos + 1.85f > 5.0f)
-	{
+	{	
 		if (!robot2->attached)
 		{
 			robot2->attached = mobiles2[mobilesOnBelt2-1];
-			memcpy(&mobiles2[1], mobiles2, sizeof(void*)*(mobilesOnBelt2-1));
+		memcpy(&mobiles2[1], mobiles2, sizeof(void*)*(mobilesOnBelt2-1));	
+		if(robotb1->attached)
+		{
 			mobiles2[0] = dynamic_cast<Mobile*>(robotb1->attached);
 			robotb1->attached = nullptr;
+		}
+		else
+		{
+			mobiles2[0] = new Mobile(Mobile::state(0));
+		}
 		}
 	}
 
@@ -386,9 +393,15 @@ void Factory::Process(float dt)
 		cyclepos = fmod(cyclepos, cyclelen);	
 
 		memcpy(&mobiles[1], mobiles, sizeof(void*)*(mobilesOnBelt-1));
-		mobiles[0] = new Mobile(Mobile::state(0));
-		mobiles[0] = dynamic_cast<Mobile*>(robot1->attached);
-		robot1->attached = nullptr;
+		if(robot1->attached)
+		{
+			mobiles[0] = dynamic_cast<Mobile*>(robot1->attached);
+			robot1->attached = nullptr;
+		}
+		else
+		{
+			mobiles[0] = new Mobile(Mobile::state(0));
+		}
 	}
 }
 
