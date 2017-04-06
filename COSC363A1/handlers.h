@@ -1,4 +1,4 @@
 #pragma once
 
-void special(int key, int x, int y);
 void registerHandlers();
+void reshaped(int w, int h);

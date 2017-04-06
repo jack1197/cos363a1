@@ -1,5 +1,7 @@
 #include "factory.h"
 #include "common.h"
+#include "camera.h"
+
 
 Factory::Factory()
 {

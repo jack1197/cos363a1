@@ -102,7 +102,10 @@ void Conveyor::Frame()
 	glPushMatrix();
 	for (int i = 0; i < 10; i++)
 	{
-		gluCylinder(quadObj, 1, 1, 10, 20, 5);
+		glPushMatrix();
+		glRotatef(-90 * cycleProgress, 0, 0, 1);
+		gluCylinder(quadObj, 1.15, 1.15, 10, 8, 5);
+		glPopMatrix();
 
 		glPushMatrix();
 		glRotatef(90, 1, 0, 0);
