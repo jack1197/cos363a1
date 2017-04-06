@@ -13,17 +13,17 @@ Factory::Factory()
 	robot5 = new Robot(7, 7);
 
 	mobiles[0] = new Mobile(Mobile::state(Mobile::Back));
-	mobiles[1] = new Mobile(Mobile::state(Mobile::Back | Mobile::Board));
-	mobiles[2] = new Mobile(Mobile::state(Mobile::Back | Mobile::Board | Mobile::Chip));
-	mobiles[3] = new Mobile(Mobile::state(Mobile::Back | Mobile::Board | Mobile::Chip | Mobile::Screen));
-	mobiles[4] = new Mobile(Mobile::state(Mobile::Back | Mobile::Board | Mobile::Chip | Mobile::Screen | Mobile::Keys));
-	mobiles[5] = new Mobile(Mobile::state(Mobile::Back | Mobile::Board | Mobile::Chip | Mobile::Screen | Mobile::Keys));
+	mobiles[1] = new Mobile(Mobile::state(Mobile::Back));
+	mobiles[2] = new Mobile(Mobile::state(Mobile::BackAndBoard));
+	mobiles[3] = new Mobile(Mobile::state(Mobile::BackAssembly));
+	mobiles[4] = new Mobile(Mobile::state(Mobile::BackAndKeys));
+	mobiles[5] = new Mobile(Mobile::state(Mobile::Full));
 
 	robot1->attached = new Mobile(Mobile::Back);
-	robot2->attached = new Mobile(Mobile::Board);
-	robot3->attached = new Mobile(Mobile::Chip);
-	robot4->attached = new Mobile(Mobile::Screen);
-	robot5->attached = new Mobile(Mobile::Keys);
+	robot2->attached = new Mobile(Mobile::BoardChipScreen);
+	robot3->attached = new Mobile(Mobile::Antenna);
+	robot4->attached = new Mobile(Mobile::Keys);
+	robot5->attached = new Mobile(Mobile::Front);
 
 	robot2->attachFlipped = true;
 	robot4->attachFlipped = true;
@@ -85,7 +85,7 @@ void Factory::Render()
 	{
 		float negated = i % 2 ? -1 : 1;
 		glPushMatrix();
-		glTranslatef(-28+14*i, 6.05f-robotOffsets[i], negated * 5.5f);
+		glTranslatef(-28+14*i, 6.00f-robotOffsets[i], negated * 5.5f);
 		botsList[i]->Render();
 		glPopMatrix();
 		glPushMatrix();
@@ -121,7 +121,7 @@ void Factory::Process(float dt)
 	cyclepos += dt;
 
 	Robot *botsList[] = {robot1, robot2, robot3, robot4, robot5};
-	Mobile::state attachedTo[]  = {Mobile::Back, Mobile::Board, Mobile::Chip, Mobile::Screen, Mobile::Keys};
+	Mobile::state attachedTo[]  = {Mobile::Back, Mobile::BoardChipScreen, Mobile::Antenna, Mobile::Keys, Mobile::Front};
 
 	const float timeOffsets = 0.8333333f;
 
@@ -154,13 +154,13 @@ void Factory::Process(float dt)
 			}
 			botsList[i]->setPos(0, 1,negated * 5.5f);
 		}
-		else if (adjustedCyclepos > 2.8 && adjustedCyclepos < 4.75)
+		else if (adjustedCyclepos > 2.8 && adjustedCyclepos < 4.85)
 		{
 			botsList[i]->setPos(0, 1,negated * -5.5f);
 			
 		}
-		else if (adjustedCyclepos > 4.75f)
-		{
+		else if (adjustedCyclepos > 4.85f)		
+			{
 			botsList[i]->setPos(0, 0,negated * -5.5f);
 		}
 	}

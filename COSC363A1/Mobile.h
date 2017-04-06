@@ -27,8 +27,8 @@ public:
 		BoardChipScreen = BoardChip | Screen,
 		BackAndBoard = Back | BoardChipScreen,
 		BackAssembly = BackAndBoard | Antenna,
-		FrontAssembly = Front | Keys,
-		Full = FrontAssembly | BackAssembly
+		BackAndKeys = BackAssembly | Keys,
+		Full = Front | BackAndKeys
 	};
 	float colors[7][4] = {
 		{1.0f, 1.0f, 1.0f, 1.0f},

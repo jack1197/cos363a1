@@ -28,7 +28,7 @@ void frameProcesses(int number)
 	camSmoothingStep(dt);
 	cameraProcesses(dt);
 
-	getRootObj()->Process(dt);
+	getRootObj()->Process(dt*0.4);
 
 
 	glutPostRedisplay();
