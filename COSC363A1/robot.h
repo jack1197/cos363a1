@@ -18,7 +18,7 @@ class Robot :
 	void movementStep(float dt);
 public:
 	SceneObject *attached = nullptr;
-	float attachedOffset[3];
+	float attachedOffset[3] = {0,0,0};
 	bool attachFlipped = false;
 	Robot(float armLength1, float armLength2);
 	~Robot();

@@ -117,7 +117,7 @@ void Robot::Render()
 	glutSolidCube(1);
 	glPopMatrix();
 
-	if (attached)
+	if (attached != nullptr)
 	{
 	glRotatef((attachFlipped ? -1 : 1) * 90,0,1,0);
 	glRotatef(180,1,0,0);
