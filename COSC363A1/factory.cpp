@@ -224,6 +224,8 @@ void Factory::Process(float dt)
 	cyclepos += dt;
 
 	Robot *botsList[] = {robot1, robot2, robot3, robot4, robot5};
+	int colorIndexs[] = {0, 1, 2, 3, 4};
+	int colorSettings[] = {0, 0, 5, 6, 1};
 	Mobile::state attachedTo[]  = {Mobile::Back, Mobile::BoardChipScreen, Mobile::Antenna, Mobile::Keys, Mobile::Front};
 
 	const float timeOffsets = 0.8333333f;
@@ -259,6 +261,12 @@ void Factory::Process(float dt)
 			if(!botsList[i]->attached && i!=1)
 			{
 				botsList[i]->attached = new Mobile(attachedTo[i]);
+				for(int j =0; j<4; j++)
+				{
+					float lower = colorMins[colorIndexs[i]][j];
+					float upper = colorMaxs[colorIndexs[i]][j];
+					dynamic_cast<Mobile*>(botsList[i]->attached)->colors[colorSettings[i]][j] = (upper - lower) * randomDist(generator) + lower;
+				}
 			}
 			if(i!=1)
 			botsList[i]->setPos(0, 1,negated * 5.5f);
@@ -278,6 +286,8 @@ void Factory::Process(float dt)
 
 	Robot *botsList2[] = {robotb1, robotb2, robotb3};
 	Mobile::state attachedTo2[]  = {Mobile::Board, Mobile::Chip, Mobile::Screen};
+	int colorIndexs2[] = {5, 6, 7};
+	int colorSettings2[] = {2, 3, 4};
 
 	for(int i = 0; i<3; i++)
 	{
@@ -325,7 +335,7 @@ void Factory::Process(float dt)
 		{
 			robot2->attached = mobiles2[mobilesOnBelt2-1];
 			memcpy(&mobiles2[1], mobiles2, sizeof(void*)*(mobilesOnBelt2-1));
-			mobiles2[0] = new Mobile(Mobile::Board);
+			mobiles2[0] = new Mobile(Mobile::state(0));
 		}
 	}
 
@@ -369,7 +379,7 @@ void Factory::Process(float dt)
 		cyclepos = fmod(cyclepos, cyclelen);	
 
 		memcpy(&mobiles[1], mobiles, sizeof(void*)*(mobilesOnBelt-1));
-		mobiles[0] = new Mobile(Mobile::Back);
+		mobiles[0] = new Mobile(Mobile::state(0));
 		//mobiles[0] = dynamic_cast<Mobile*>(robot1->attached);
 		//robot1->attached = nullptr;
 	}

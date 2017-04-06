@@ -4,6 +4,7 @@
 #include "conveyor.h"
 #include "robot.h"
 #include "Mobile.h"
+#include <random>
 
 class Factory :
 	public SceneObject
@@ -31,6 +32,28 @@ class Factory :
 	float cyclelen = 5.0f;
 	float robotOffsets[6] = {-0.2f, -0.34f, -0.2f, -0.45f, -0.4f, -0.45f};
 	float robotOffsets2[3] = {-0.15f, -0.2f, -0.35f};
+	float colorMins[8][4] = {
+		{0.f, 0.f,0.f,1.f},
+		{0},
+		{0.f, 0.f,0.f,1.f},
+		{0.f, 0.f,0.f,1.f},
+		{0.f, 0.f,0.f,1.f},
+		{0.f, .8f,0.f,1.f},
+		{0.f, 0.f,0.f,1.f},
+		{.7f, .85f,.7f,1.f}
+	};
+	float colorMaxs[8][4] = {
+		{1.f, 1.f,1.f,1.f},
+		{0},
+		{1.f, 1.f,1.f,1.f},
+		{1.f, 1.f,1.f,1.f},
+		{1.f, 1.f,1.f,1.f},
+		{.2f, 1.f,.2f,1.f},
+		{.3f, .3f,.3f,1.f},
+		{.85f, 1.f,.85f,1.f}
+	};
+	std::default_random_engine generator;
+	std::uniform_real_distribution<float> randomDist = std::uniform_real_distribution<float>(0.0, 1.0);
 
 
 public:
