@@ -10,6 +10,7 @@ namespace myTiming
 {
 	high_resolution_clock::time_point last;
 	high_resolution_clock::time_point start;
+	float timeFactor = 1;
 }
 
 void timerInit()
@@ -28,7 +29,8 @@ void frameProcesses(int number)
 	camSmoothingStep(dt);
 	cameraProcesses(dt);
 
-	getRootObj()->Process(dt*0.4);
+	//std::cout<<myTiming::timeFactor<<"\n";
+	getRootObj()->Process(dt*myTiming::timeFactor);
 
 
 	glutPostRedisplay();
@@ -108,6 +110,18 @@ void cameraProcesses(float dt)
 		multiplied[2] = float(-cos(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI)) * unitPerSec * dt;
 		multiplied[1] = float(-cos(angles[1] / 180.f*PI)) * unitPerSec * dt;
 		camSetPos(multiplied, 1, 1);
+	}
+	if (isKeyDown('+'))
+	{
+		myTiming::timeFactor *= (1.0 + 0.3 * dt);
+	}
+	if (isKeyDown('-'))
+	{
+		myTiming::timeFactor /= (1.0 + 0.3 * dt);
+	}
+	if (isKeyDown('*'))
+	{
+		myTiming::timeFactor =1;
 	}
 	//std::cout << direction[0] << "\t" << direction[1] << "\t" << direction[2] << "\n";
 }
