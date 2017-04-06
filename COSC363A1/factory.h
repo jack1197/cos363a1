@@ -22,6 +22,7 @@ class Factory :
 	Mobile *mobiles[mobilesOnBelt];
 	float cyclepos = 0.0f;
 	float cyclelen = 5.0f;
+	float robotOffsets[5] = {-0.2f, -0.2f, -0.2f, -0.3f, -0.45f};
 
 public:
 	Factory();

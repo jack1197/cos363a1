@@ -27,6 +27,12 @@ Factory::Factory()
 
 	robot2->attachFlipped = true;
 	robot4->attachFlipped = true;
+
+	Robot *botsList[] = {robot1, robot2, robot3, robot4, robot5};
+	for ( int i = 0; i<5; i++)
+	{
+		botsList[i]->attachedOffset[1] = robotOffsets[i];
+	}
 }
 
 Factory::~Factory()
@@ -74,26 +80,23 @@ void Factory::Render()
 	conveyor->Render();
 	glPopMatrix();
 
-	glPushMatrix();
-	glTranslatef(-28, 6.05f, 5.5f);
-	robot1->Render();
-	glPopMatrix();
-	glPushMatrix();
-	glTranslatef(-14, 6.05f, -5.5f);
-	robot2->Render();
-	glPopMatrix();
-	glPushMatrix();
-	glTranslatef(0, 6.05f, 5.5f);
-	robot3->Render();
-	glPopMatrix();
-	glPushMatrix();
-	glTranslatef(14, 6.05f, -5.5f);
-	robot4->Render();
-	glPopMatrix();
-	glPushMatrix();
-	glTranslatef(28, 6.05f, 5.5f);
-	robot5->Render();
-	glPopMatrix();
+	Robot *botsList[] = {robot1, robot2, robot3, robot4, robot5};
+	for(int i =0; i<5; i++)
+	{
+		float negated = i % 2 ? -1 : 1;
+		glPushMatrix();
+		glTranslatef(-28+14*i, 6.05f-robotOffsets[i], negated * 5.5f);
+		botsList[i]->Render();
+		glPopMatrix();
+		glPushMatrix();
+		glColor3f(165./255., 136./255., 85./255.);
+		float spec_colour[3] = {165./255./4., 136./255./4., 85./255./4.};
+		glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
+		glMaterialf(GL_FRONT, GL_SHININESS, 2);
+		glTranslatef(-28+14*i, 2.5f, negated * 11.0f);
+		glutSolidCube(5);
+		glPopMatrix();
+	}
 
 	for (int i = 0; i<mobilesOnBelt; i++)
 	{
@@ -126,7 +129,7 @@ void Factory::Process(float dt)
 	{
 		float adjustedCyclepos = fmod(cyclepos + timeOffsets*(6-i), cyclelen);
 		float negated = i % 2 ? -1 : 1;
-		if (adjustedCyclepos < 2.3)
+		if (adjustedCyclepos < 1.8)
 		{
 			if(i>0 && botsList[i]->attached)
 			{
@@ -138,17 +141,25 @@ void Factory::Process(float dt)
 			}
 			botsList[i]->setPos(0, 1,negated * 5.5f);
 		}
-		else if (adjustedCyclepos > 2.3 && adjustedCyclepos < 4.65)
+		else if (adjustedCyclepos > 1.8 && adjustedCyclepos < 2.3)
+		{
+			botsList[i]->setPos(0, -3,negated * 5.5f);
+		}
+		else if (adjustedCyclepos > 2.3 && adjustedCyclepos < 2.8)
 		{
 			if(!botsList[i]->attached)
 			{
 				botsList[i]->attached = new Mobile(attachedTo[i]);
 
 			}
+			botsList[i]->setPos(0, 1,negated * 5.5f);
+		}
+		else if (adjustedCyclepos > 2.8 && adjustedCyclepos < 4.75)
+		{
 			botsList[i]->setPos(0, 1,negated * -5.5f);
 			
 		}
-		else if (adjustedCyclepos > 4.65)
+		else if (adjustedCyclepos > 4.75f)
 		{
 			botsList[i]->setPos(0, 0,negated * -5.5f);
 		}

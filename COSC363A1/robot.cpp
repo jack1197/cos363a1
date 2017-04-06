@@ -98,6 +98,13 @@ void Robot::Render()
 	glPopMatrix();
 
 	glTranslatef(0, armLength2, 0);
+
+	glPushMatrix();
+	glTranslatef(0,-0.1f,0);
+	glScalef(0.4,0.2,4);
+	glutSolidCube(1);
+	glPopMatrix();
+
 	if (attached)
 	{
 	glRotatef((attachFlipped ? -1 : 1) * 90,0,1,0);
@@ -111,8 +118,8 @@ void Robot::Render()
 
 void Robot::movementStep(float dt)
 {
-	const float coreAnglePerSec = 90;
-	const float arm1AnglePerSec = 45;
+	const float coreAnglePerSec = 110;
+	const float arm1AnglePerSec = 80;
 	const float arm2AnglePerSec = 80;
 
 	float coreError = float(remainder(coreAngle - coreAngleTarget, 360));
