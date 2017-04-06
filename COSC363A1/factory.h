@@ -49,7 +49,7 @@ class Factory :
 		{1.f, 1.f,1.f,1.f},
 		{1.f, 1.f,1.f,1.f},
 		{.2f, 1.f,.2f,1.f},
-		{.3f, .3f,.3f,1.f},
+		{.2f, .2f,.2f,1.f},
 		{.85f, 1.f,.85f,1.f}
 	};
 	std::default_random_engine generator;

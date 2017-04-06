@@ -232,11 +232,11 @@ void Factory::Process(float dt)
 
 	for (int i = 0; i<5; i++)
 	{
-		float adjustedCyclepos = fmod(cyclepos + timeOffsets*(6-i), cyclelen);
+		float adjustedCyclepos = fmod(cyclepos + timeOffsets*(6-i) + (i == 0 ? 0.1f : 0.f), cyclelen);
 		float negated = i % 2 ? -1 : 1;
 		if (adjustedCyclepos < 1.8)
 		{
-			if(botsList[i]->attached) //i>0 && 
+			if(botsList[i]->attached && i != 0) //i>0 && 
 			{
 				Mobile *oldmobile = mobiles[i];
 				mobiles[i] = mobiles[i]->Combine(dynamic_cast<Mobile*>(botsList[i]->attached));
@@ -295,7 +295,7 @@ void Factory::Process(float dt)
 		float negated = i % 2 ? -1 : 1;
 		if (adjustedCyclepos < 1.8)
 		{
-			if(botsList2[i]->attached)
+			if(botsList2[i]->attached && i!= 0)
 			{
 				Mobile *oldmobile = mobiles2[i];
 				mobiles2[i] = mobiles2[i]->Combine(dynamic_cast<Mobile*>(botsList2[i]->attached));
@@ -314,6 +314,12 @@ void Factory::Process(float dt)
 			if(!botsList2[i]->attached)
 			{
 				botsList2[i]->attached = new Mobile(attachedTo2[i]);
+				for(int j =0; j<4; j++)
+				{
+					float lower = colorMins[colorIndexs2[i]][j];
+					float upper = colorMaxs[colorIndexs2[i]][j];
+					dynamic_cast<Mobile*>(botsList2[i]->attached)->colors[colorSettings2[i]][j] = (upper - lower) * randomDist(generator) + lower;
+				}
 
 			}
 			botsList2[i]->setPos(0, 1,negated * 5.5f);
@@ -335,7 +341,8 @@ void Factory::Process(float dt)
 		{
 			robot2->attached = mobiles2[mobilesOnBelt2-1];
 			memcpy(&mobiles2[1], mobiles2, sizeof(void*)*(mobilesOnBelt2-1));
-			mobiles2[0] = new Mobile(Mobile::state(0));
+			mobiles2[0] = dynamic_cast<Mobile*>(robotb1->attached);
+			robotb1->attached = nullptr;
 		}
 	}
 
@@ -380,8 +387,8 @@ void Factory::Process(float dt)
 
 		memcpy(&mobiles[1], mobiles, sizeof(void*)*(mobilesOnBelt-1));
 		mobiles[0] = new Mobile(Mobile::state(0));
-		//mobiles[0] = dynamic_cast<Mobile*>(robot1->attached);
-		//robot1->attached = nullptr;
+		mobiles[0] = dynamic_cast<Mobile*>(robot1->attached);
+		robot1->attached = nullptr;
 	}
 }
 
