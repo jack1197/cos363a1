@@ -7,7 +7,7 @@ Factory::Factory()
 	wallTex = new Texture("TexturesCom_BrickSmallBrown0270_1_seamless_S.tga", "TGA");
 	conveyor = new Conveyor();
 	conveyor2 = new Conveyor();
-	conveyor2->cyclesPerSec = 1.f;
+	conveyor2->cyclesPerSec = 1.5f;
 	float armLengths = 7;
 	robot1 = new Robot(armLengths, armLengths);
 	robot2 = new Robot(armLengths, armLengths);
@@ -21,6 +21,11 @@ Factory::Factory()
 	mobiles[3] = new Mobile(Mobile::state(Mobile::BackAssembly));
 	mobiles[4] = new Mobile(Mobile::state(Mobile::BackAndKeys));
 	mobiles[5] = new Mobile(Mobile::state(Mobile::Full));
+
+	for(int i = 0; i < mobilesOnBelt2; i++)
+	{
+		mobiles2[i] = new Mobile(Mobile::BoardChipScreen);
+	}
 
 	robot1->attached = new Mobile(Mobile::Back);
 	robot2->attached = new Mobile(Mobile::BoardChipScreen);
@@ -44,6 +49,11 @@ Factory::~Factory()
 	delete wallTex;
 	delete conveyor;
 	delete robot1;
+	delete robot2;
+	delete robot3;
+	delete robot4;
+	delete robot5;
+	delete conveyor2;
 
 	for (int i = 0; i<mobilesOnBelt; i++)
 	{
@@ -86,7 +96,7 @@ void Factory::Render()
 	glPopMatrix();
 
 	glPushMatrix();
-	glTranslatef(-8.5, 0, -12);
+	glTranslatef(-19.5, 0, -12);
 	glRotatef(-90, 0 ,1,0);
 	conveyor2->Render();
 	glPopMatrix();
@@ -122,13 +132,13 @@ void Factory::Render()
 		glPopMatrix();
 	}
 	glPushMatrix();
-	glTranslatef(-8.5, 0, -12);
+	glTranslatef(-19.5, 0, -7);
 	glRotatef(-90, 0, 1, 0);
 	for (int i = 0; i<mobilesOnBelt2; i++)
 	{
 		glPushMatrix();
 		glTranslatef(-28.0f+i*6+cyclepos*1.2f, 6.0f, 0);
-		mobiles[i]->Render();
+		mobiles2[i]->Render();
 		glPopMatrix();
 	}
 	glPopMatrix();
@@ -171,14 +181,14 @@ void Factory::Process(float dt)
 			if(i!=1)
 			botsList[i]->setPos(0, 1,negated * 5.5f);
 			else
-			botsList[i]->setPos(5.5f, 1,0);
+			botsList[i]->setPos(-5.5f, 1,0);
 		}
 		else if (adjustedCyclepos > 1.8 && adjustedCyclepos < 2.3)
 		{
 			if(i!=1)
 			botsList[i]->setPos(0, -3,negated * 5.5f);
 			else
-			botsList[i]->setPos(5.5f, 0,0);
+			botsList[i]->setPos(-5.5f, 0,0);
 		}
 		else if (adjustedCyclepos > 2.3 && adjustedCyclepos < 2.8)
 		{
@@ -190,7 +200,7 @@ void Factory::Process(float dt)
 			if(i!=1)
 			botsList[i]->setPos(0, 1,negated * 5.5f);
 			else
-			botsList[i]->setPos(5.5f, 1,0);
+			botsList[i]->setPos(-5.5f, 1,0);
 		}
 		else if (adjustedCyclepos > 2.8 && adjustedCyclepos < 4.85)
 		{

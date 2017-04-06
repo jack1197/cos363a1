@@ -218,7 +218,7 @@ void Robot::setPos(float x, float y, float z)
 	float theta_prime = acos((pow(armLength2, 2) - pow(armLength1, 2) - d_squared) / (-2 * armLength1*pow(d_squared, 0.5f)));
 	float theta = float(PI) / 2 - d_angle - theta_prime;
 	float phi = float(PI - acos((d_squared - pow(armLength1, 2) - pow(armLength2, 2)) / (-2 * armLength1*armLength2)));
-	float gamma = float(atan(z / x) + (z < 0 && x < 0 ? PI : 0));
+	float gamma = float(atan(z / x) + ((z < 0 && x < 0)||(x < 0 && z == 0) ? PI : 0));
 
 	coreAngleTarget = gamma / float(PI) * 180.f;
 	armAngle1Target = theta / float(PI) * 180.f;

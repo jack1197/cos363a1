@@ -20,8 +20,9 @@ class Factory :
 	void brickWall(int subdivisions, int repetitions);
 	void subdividedSurface(int subdivisions, int repetitions, float v_stretch);
 	const static int mobilesOnBelt = 6;
-	const static int mobilesOnBelt2 = 6;
+	const static int mobilesOnBelt2 = 5;
 	Mobile *mobiles[mobilesOnBelt];
+	Mobile *mobiles2[mobilesOnBelt];
 	float cyclepos = 0.0f;
 	float cyclelen = 5.0f;
 	float robotOffsets[5] = {-0.2f, -0.34f, -0.2f, -0.45f, -0.4f};
