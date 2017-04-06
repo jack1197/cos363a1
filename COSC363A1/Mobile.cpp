@@ -22,6 +22,13 @@ Mobile::Mobile(state State)
 		antenna = new ObjMesh("antenna.obj");
 		board = new ObjMesh("board.obj");
 		chip = new ObjMesh("chip.obj");
+		front->Optimize();
+		back->Optimize();
+		screen->Optimize();
+		keys->Optimize();
+		antenna->Optimize();
+		board->Optimize();
+		chip->Optimize();
 	}
 	CurrentState = State;
 }

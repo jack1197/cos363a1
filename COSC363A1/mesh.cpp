@@ -48,6 +48,13 @@ void setNormal(float v1[3], float v2[3], float v3[3])
 	glNormal3f(n[0], n[1], n[2]);
 }
 
+void getNormal(float v1[3], float v2[3], float v3[3], float out[3])
+{
+	out[0] = v1[1] * (v2[2] - v3[2]) + v2[1] * (v3[2] - v1[2]) + v3[1] * (v1[2] - v2[2]);
+	out[1] = v1[2] * (v2[0] - v3[0]) + v2[2] * (v3[0] - v1[0]) + v3[2] * (v1[0] - v2[0]);
+	out[2] = v1[0] * (v2[1] - v3[1]) + v2[0] * (v3[1] - v1[1]) + v3[0] * (v1[1] - v2[1]);
+}
+
 ObjMesh::~ObjMesh()
 {
 	for (auto whatever : verticies)
@@ -58,20 +65,39 @@ ObjMesh::~ObjMesh()
 	{
 		delete[] whatever;
 	}
+	if (optimized)
+	{
+		delete[] optimized;
+	}
 }
 
 void ObjMesh::Render()
 {
 	glEnable(GL_AUTO_NORMAL);
 	glBegin(GL_TRIANGLES);
-	for (int *face : faces)
+	if (!optimized)
 	{
-		setNormal(verticies[face[0] - 1], verticies[face[1] - 1], verticies[face[2] - 1]);
-		for (int i = 0; i < 3; i++)
+		for (int *face : faces)
 		{
-			int vertex = face[i] - 1;
-			//std::cout<<"making vertex "<<vertex<<"\n";
-			glVertex3f(verticies[vertex][0], verticies[vertex][1], verticies[vertex][2]);
+			setNormal(verticies[face[0] - 1], verticies[face[1] - 1], verticies[face[2] - 1]);
+			for (int i = 0; i < 3; i++)
+			{
+				int vertex = face[i] - 1;
+				//std::cout<<"making vertex "<<vertex<<"\n";
+				glVertex3f(verticies[vertex][0], verticies[vertex][1], verticies[vertex][2]);
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < n; i++)
+		{
+			//std::cout << optimized + i*12 << ":"<< i<<":"<< optimized[i * 12] << "\n";
+			glNormal3fv(optimized + i * 12);
+			glVertex3fv(optimized + i * 12 + 3);
+			glVertex3fv(optimized + i * 12 + 6);
+			glVertex3fv(optimized + i * 12 + 9);
+			
 		}
 	}
 	glEnd();
@@ -80,4 +106,24 @@ void ObjMesh::Render()
 void ObjMesh::Process(float dt)
 {
 
+}
+
+void ObjMesh::Optimize()
+{
+	if (!optimized)
+	{
+		n = faces.size();
+		optimized = new float[n * 12];
+		for (int i = 0; i < faces.size(); i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				for (int k = 0; k < 3; k++)
+				{
+					optimized[i * 12 + j * 3 + k + 3] = verticies[faces[i][j] - 1][k];
+				}
+			}
+			getNormal(optimized + i * 12 + 3, optimized + i * 12 + 6, optimized + i * 12 + 9, optimized + i * 12);
+		}
+	}
 }
