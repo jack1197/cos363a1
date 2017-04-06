@@ -83,9 +83,9 @@ Mobile *Mobile::Combine(Mobile *combinand)
 	for (int i = 0; i < 7; i++)
 	{
 		if (CurrentState & baseStates[i])
-			memcpy(combination->colors[i],colors[i],  sizeof(float) * 4);
+			memcpy(combination->colors[i], colors[i], sizeof(float) * 4);
 		else
-			memcpy(combination->colors[i],combinand->colors[i],  sizeof(float) * 4);
+			memcpy(combination->colors[i], combinand->colors[i], sizeof(float) * 4);
 	}
 	return combination;
 }

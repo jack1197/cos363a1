@@ -121,7 +121,7 @@ void cameraProcesses(float dt)
 	}
 	if (isKeyDown('*'))
 	{
-		myTiming::timeFactor =1;
+		myTiming::timeFactor = 1;
 	}
 	//std::cout << direction[0] << "\t" << direction[1] << "\t" << direction[2] << "\n";
 }

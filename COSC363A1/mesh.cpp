@@ -97,7 +97,7 @@ void ObjMesh::Render()
 			glVertex3fv(optimized + i * 12 + 3);
 			glVertex3fv(optimized + i * 12 + 6);
 			glVertex3fv(optimized + i * 12 + 9);
-			
+
 		}
 	}
 	glEnd();

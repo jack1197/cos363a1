@@ -14,7 +14,7 @@ class Mobile :
 	static ObjMesh *keys;
 	static ObjMesh *antenna;
 
-public: 
+public:
 	enum state {
 		Back = 0b00000001,
 		Front = 0b00000010,
@@ -37,7 +37,7 @@ public:
 		{0.2f, 0.2f, 0.2f, 1.0f},
 		{0.6f, 0.7f, 0.6f, 1.0f},
 		{0.1f, 0.1f, 0.1f, 1.0f},
-		{0.5f, 0.5f, 0.5f, 1.0f}};
+		{0.5f, 0.5f, 0.5f, 1.0f} };
 private:
 	state CurrentState;
 public:

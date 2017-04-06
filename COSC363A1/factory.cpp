@@ -29,7 +29,7 @@ Factory::Factory()
 
 	mobiles2[0] = new Mobile(Mobile::Board);
 	mobiles2[1] = new Mobile(Mobile::BoardChip);
-	for(int i = 2; i < mobilesOnBelt2; i++)
+	for (int i = 2; i < mobilesOnBelt2; i++)
 	{
 		mobiles2[i] = new Mobile(Mobile::BoardChipScreen);
 	}
@@ -51,14 +51,14 @@ Factory::Factory()
 
 	robotb2->attachFlipped = true;
 
-	Robot *botsList[] = {robot1, robot2, robot3, robot4, robot5, robot6};
-	for ( int i = 0; i<6; i++)
+	Robot *botsList[] = { robot1, robot2, robot3, robot4, robot5, robot6 };
+	for (int i = 0; i < 6; i++)
 	{
 		botsList[i]->attachedOffset[1] = robotOffsets[i];
 	}
 
-	Robot *botsList2[] = {robotb1, robotb2, robotb3};
-	for ( int i = 0; i<3; i++)
+	Robot *botsList2[] = { robotb1, robotb2, robotb3 };
+	for (int i = 0; i < 3; i++)
 	{
 		botsList2[i]->attachedOffset[1] = robotOffsets2[i];
 	}
@@ -76,7 +76,7 @@ Factory::~Factory()
 	delete robot5;
 	delete conveyor2;
 
-	for (int i = 0; i<mobilesOnBelt; i++)
+	for (int i = 0; i < mobilesOnBelt; i++)
 	{
 		delete mobiles[i];
 	}
@@ -122,45 +122,45 @@ void Factory::Render()
 	//aux belt 1
 	glPushMatrix();
 	glTranslatef(-19.5, 0, -12);
-	glRotatef(-90, 0 ,1,0);
+	glRotatef(-90, 0, 1, 0);
 	conveyor2->Render();
 	glPopMatrix();
 
 	//main robots
 
 	glPushMatrix();
-	glTranslatef(0,0,10);
-	Robot *botsList[] = {robot1, robot2, robot3, robot4, robot5, robot6};
-	for(int i =0; i<6; i++)
+	glTranslatef(0, 0, 10);
+	Robot *botsList[] = { robot1, robot2, robot3, robot4, robot5, robot6 };
+	for (int i = 0; i < 6; i++)
 	{
 		float negated = i % 2 ? -1 : 1;
 		glPushMatrix();
-		glTranslatef(-28+14*i, 6.00f-robotOffsets[i], negated * 5.5f);
+		glTranslatef(-28 + 14 * i, 6.00f - robotOffsets[i], negated * 5.5f);
 		botsList[i]->Render();
 		glPopMatrix();
-		if(i!=1)
+		if (i != 1)
 		{
-		glPushMatrix();
-		glColor3f(165./255., 136./255., 85./255.);
-		float spec_colour[3] = {165./255./4., 136./255./4., 85./255./4.};
-		glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
-		glMaterialf(GL_FRONT, GL_SHININESS, 2);
-		glTranslatef(-28+14*i, 2.5f, negated * 11.0f);
-		glScalef(2,1,1);
-		glutSolidCube(5);
-		glPopMatrix();
+			glPushMatrix();
+			glColor3f(165. / 255., 136. / 255., 85. / 255.);
+			float spec_colour[3] = { 165. / 255. / 4., 136. / 255. / 4., 85. / 255. / 4. };
+			glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
+			glMaterialf(GL_FRONT, GL_SHININESS, 2);
+			glTranslatef(-28 + 14 * i, 2.5f, negated * 11.0f);
+			glScalef(2, 1, 1);
+			glutSolidCube(5);
+			glPopMatrix();
 		}
 	}
 	//main mobiles
 
-	for (int i = 0; i<mobilesOnBelt; i++)
+	for (int i = 0; i < mobilesOnBelt; i++)
 	{
-		if(i!=5 || cyclepos < 4.1666666f)
+		if (i != 5 || cyclepos < 4.1666666f)
 		{
-		glPushMatrix();
-		glTranslatef(-28.0f+i*12+cyclepos*2.4f, 6.0f, 0);
-		mobiles[i]->Render();
-		glPopMatrix();
+			glPushMatrix();
+			glTranslatef(-28.0f + i * 12 + cyclepos*2.4f, 6.0f, 0);
+			mobiles[i]->Render();
+			glPopMatrix();
 		}
 	}
 	glPopMatrix();
@@ -169,10 +169,10 @@ void Factory::Render()
 	glPushMatrix();
 	glTranslatef(-19.5, 0, 3);
 	glRotatef(-90, 0, 1, 0);
-	for (int i = 0; i<mobilesOnBelt2; i++)
+	for (int i = 0; i < mobilesOnBelt2; i++)
 	{
 		glPushMatrix();
-		glTranslatef(-28.5f+i*6+fmod((cyclepos + 1.85f), cyclelen)*1.2f, 6.0f, 0);
+		glTranslatef(-28.5f + i * 6 + fmod((cyclepos + 1.85f), cyclelen)*1.2f, 6.0f, 0);
 		mobiles2[i]->Render();
 		glPopMatrix();
 	}
@@ -180,23 +180,23 @@ void Factory::Render()
 
 	//aux robots
 	glPushMatrix();
-	glTranslatef(-19.5,0, 2.5);
+	glTranslatef(-19.5, 0, 2.5);
 	glRotatef(-90, 0, 1, 0);
-	Robot *botsList2[] = {robotb1, robotb2, robotb3};
-	for(int i =0; i<3; i++)
+	Robot *botsList2[] = { robotb1, robotb2, robotb3 };
+	for (int i = 0; i < 3; i++)
 	{
 		float negated = i % 2 ? -1 : 1;
 		glPushMatrix();
-		glTranslatef(-28+7*i, 6.00f-robotOffsets2[i], negated * 5.5f);
+		glTranslatef(-28 + 7 * i, 6.00f - robotOffsets2[i], negated * 5.5f);
 		botsList2[i]->Render();
 		glPopMatrix();
 		glPushMatrix();
-		glColor3f(165./255., 136./255., 85./255.);
-		float spec_colour[3] = {165./255./4., 136./255./4., 85./255./4.};
+		glColor3f(165. / 255., 136. / 255., 85. / 255.);
+		float spec_colour[3] = { 165. / 255. / 4., 136. / 255. / 4., 85. / 255. / 4. };
 		glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
 		glMaterialf(GL_FRONT, GL_SHININESS, 2);
-		glTranslatef(-28+7*i, 2.5f, negated * 11.0f);
-		glScalef(1,1,1);
+		glTranslatef(-28 + 7 * i, 2.5f, negated * 11.0f);
+		glScalef(1, 1, 1);
 		glutSolidCube(5);
 		glPopMatrix();
 	}
@@ -223,20 +223,20 @@ void Factory::Process(float dt)
 
 	cyclepos += dt;
 
-	Robot *botsList[] = {robot1, robot2, robot3, robot4, robot5};
-	int colorIndexs[] = {0, 1, 2, 3, 4};
-	int colorSettings[] = {0, 0, 5, 6, 1};
-	Mobile::state attachedTo[]  = {Mobile::Back, Mobile::BoardChipScreen, Mobile::Antenna, Mobile::Keys, Mobile::Front};
+	Robot *botsList[] = { robot1, robot2, robot3, robot4, robot5 };
+	int colorIndexs[] = { 0, 1, 2, 3, 4 };
+	int colorSettings[] = { 0, 0, 5, 6, 1 };
+	Mobile::state attachedTo[] = { Mobile::Back, Mobile::BoardChipScreen, Mobile::Antenna, Mobile::Keys, Mobile::Front };
 
 	const float timeOffsets = 0.8333333f;
 
-	for (int i = 0; i<5; i++)
+	for (int i = 0; i < 5; i++)
 	{
-		float adjustedCyclepos = fmod(cyclepos + timeOffsets*(6-i) + (i == 0 ? 0.1f : 0.f), cyclelen);
+		float adjustedCyclepos = fmod(cyclepos + timeOffsets*(6 - i) + (i == 0 ? 0.1f : 0.f), cyclelen);
 		float negated = i % 2 ? -1 : 1;
 		if (adjustedCyclepos < 1.8)
 		{
-			if(botsList[i]->attached && i != 0) //i>0 && 
+			if (botsList[i]->attached && i != 0) //i>0 && 
 			{
 				Mobile *oldmobile = mobiles[i];
 				mobiles[i] = mobiles[i]->Combine(dynamic_cast<Mobile*>(botsList[i]->attached));
@@ -244,58 +244,58 @@ void Factory::Process(float dt)
 				botsList[i]->attached = nullptr;
 				delete oldmobile;
 			}
-			if(i!=1)
-			botsList[i]->setPos(0, 1,negated * 5.5f);
+			if (i != 1)
+				botsList[i]->setPos(0, 1, negated * 5.5f);
 			else
-			botsList[i]->setPos(-5.5f, 1,0);
+				botsList[i]->setPos(-5.5f, 1, 0);
 		}
 		else if (adjustedCyclepos > 1.8 && adjustedCyclepos < 2.3)
 		{
-			if(i!=1)
-			botsList[i]->setPos(0, -3,negated * 5.5f);
+			if (i != 1)
+				botsList[i]->setPos(0, -3, negated * 5.5f);
 			else
-			botsList[i]->setPos(-5.5f, 0,0);
+				botsList[i]->setPos(-5.5f, 0, 0);
 		}
 		else if (adjustedCyclepos > 2.3 && adjustedCyclepos < 2.8)
 		{
-			if(!botsList[i]->attached && i!=1)
+			if (!botsList[i]->attached && i != 1)
 			{
 				botsList[i]->attached = new Mobile(attachedTo[i]);
-				for(int j =0; j<4; j++)
+				for (int j = 0; j < 4; j++)
 				{
 					float lower = colorMins[colorIndexs[i]][j];
 					float upper = colorMaxs[colorIndexs[i]][j];
 					dynamic_cast<Mobile*>(botsList[i]->attached)->colors[colorSettings[i]][j] = (upper - lower) * randomDist(generator) + lower;
 				}
 			}
-			if(i!=1)
-			botsList[i]->setPos(0, 1,negated * 5.5f);
+			if (i != 1)
+				botsList[i]->setPos(0, 1, negated * 5.5f);
 			else
-			botsList[i]->setPos(-5.5f, 1,0);
+				botsList[i]->setPos(-5.5f, 1, 0);
 		}
 		else if (adjustedCyclepos > 2.8 && adjustedCyclepos < 4.85)
 		{
-			botsList[i]->setPos(0, 1,negated * -5.5f);
-			
+			botsList[i]->setPos(0, 1, negated * -5.5f);
+
 		}
-		else if (adjustedCyclepos > 4.85f)		
-			{
-			botsList[i]->setPos(0, 0,negated * -5.5f);
+		else if (adjustedCyclepos > 4.85f)
+		{
+			botsList[i]->setPos(0, 0, negated * -5.5f);
 		}
 	}
 
-	Robot *botsList2[] = {robotb1, robotb2, robotb3};
-	Mobile::state attachedTo2[]  = {Mobile::Board, Mobile::Chip, Mobile::Screen};
-	int colorIndexs2[] = {5, 6, 7};
-	int colorSettings2[] = {2, 3, 4};
+	Robot *botsList2[] = { robotb1, robotb2, robotb3 };
+	Mobile::state attachedTo2[] = { Mobile::Board, Mobile::Chip, Mobile::Screen };
+	int colorIndexs2[] = { 5, 6, 7 };
+	int colorSettings2[] = { 2, 3, 4 };
 
-	for(int i = 0; i<3; i++)
+	for (int i = 0; i < 3; i++)
 	{
-		float adjustedCyclepos = fmod(cyclepos + timeOffsets*(6-i) + 1.85f, cyclelen);
+		float adjustedCyclepos = fmod(cyclepos + timeOffsets*(6 - i) + 1.85f, cyclelen);
 		float negated = i % 2 ? -1 : 1;
 		if (adjustedCyclepos < 1.8)
 		{
-			if(botsList2[i]->attached && i!= 0)
+			if (botsList2[i]->attached && i != 0)
 			{
 				Mobile *oldmobile = mobiles2[i];
 				mobiles2[i] = mobiles2[i]->Combine(dynamic_cast<Mobile*>(botsList2[i]->attached));
@@ -303,18 +303,18 @@ void Factory::Process(float dt)
 				botsList2[i]->attached = nullptr;
 				delete oldmobile;
 			}
-			botsList2[i]->setPos(0, 1,negated * 5.5f);
+			botsList2[i]->setPos(0, 1, negated * 5.5f);
 		}
 		else if (adjustedCyclepos > 1.8 && adjustedCyclepos < 2.3)
 		{
-			botsList2[i]->setPos(0, -3,negated * 5.5f);
+			botsList2[i]->setPos(0, -3, negated * 5.5f);
 		}
 		else if (adjustedCyclepos > 2.3 && adjustedCyclepos < 2.8)
 		{
-			if(!botsList2[i]->attached)
+			if (!botsList2[i]->attached)
 			{
 				botsList2[i]->attached = new Mobile(attachedTo2[i]);
-				for(int j =0; j<4; j++)
+				for (int j = 0; j < 4; j++)
 				{
 					float lower = colorMins[colorIndexs2[i]][j];
 					float upper = colorMaxs[colorIndexs2[i]][j];
@@ -322,40 +322,40 @@ void Factory::Process(float dt)
 				}
 
 			}
-			botsList2[i]->setPos(0, 1,negated * 5.5f);
+			botsList2[i]->setPos(0, 1, negated * 5.5f);
 		}
 		else if (adjustedCyclepos > 2.8 && adjustedCyclepos < 4.85)
 		{
-			botsList2[i]->setPos(0, 1,negated * -5.5f);
-			
+			botsList2[i]->setPos(0, 1, negated * -5.5f);
+
 		}
-		else if (adjustedCyclepos > 4.85f)		
-			{
-			botsList2[i]->setPos(0, 0,negated * -5.5f);
+		else if (adjustedCyclepos > 4.85f)
+		{
+			botsList2[i]->setPos(0, 0, negated * -5.5f);
 		}
 	}
 
 	if (cyclepos + 1.85f > 5.0f)
-	{	
+	{
 		if (!robot2->attached)
 		{
-			robot2->attached = mobiles2[mobilesOnBelt2-1];
-		memcpy(&mobiles2[1], mobiles2, sizeof(void*)*(mobilesOnBelt2-1));	
-		if(robotb1->attached)
-		{
-			mobiles2[0] = dynamic_cast<Mobile*>(robotb1->attached);
-			robotb1->attached = nullptr;
-		}
-		else
-		{
-			mobiles2[0] = new Mobile(Mobile::state(0));
-		}
+			robot2->attached = mobiles2[mobilesOnBelt2 - 1];
+			memcpy(&mobiles2[1], mobiles2, sizeof(void*)*(mobilesOnBelt2 - 1));
+			if (robotb1->attached)
+			{
+				mobiles2[0] = dynamic_cast<Mobile*>(robotb1->attached);
+				robotb1->attached = nullptr;
+			}
+			else
+			{
+				mobiles2[0] = new Mobile(Mobile::state(0));
+			}
 		}
 	}
 
 	if (cyclepos > 4.166666f)
 	{
-		robot6->attached = mobiles[mobilesOnBelt-1];
+		robot6->attached = mobiles[mobilesOnBelt - 1];
 	}
 
 
@@ -363,37 +363,37 @@ void Factory::Process(float dt)
 		float adjustedCyclepos = fmod(cyclepos + 0.833333f, cyclelen);
 		if (adjustedCyclepos < 1.8)
 		{
-			robot6->setPos(0,1,-5.5f);
+			robot6->setPos(0, 1, -5.5f);
 		}
 		else if (adjustedCyclepos < 2.5)
 		{
-			robot6->setPos(0,-3,-5.5f);
+			robot6->setPos(0, -3, -5.5f);
 		}
 		else if (adjustedCyclepos < 3.0)
 		{
-			if(robot6->attached)
+			if (robot6->attached)
 			{
 				delete robot6->attached;
 				robot6->attached = nullptr;
 			}
-			robot6->setPos(0,1,-5.5f);
+			robot6->setPos(0, 1, -5.5f);
 		}
 		else if (adjustedCyclepos < 4.85f)
 		{
-			robot6->setPos(0,1,5.5f);
+			robot6->setPos(0, 1, 5.5f);
 		}
 		else
 		{
-			robot6->setPos(0,0,5.5f);
+			robot6->setPos(0, 0, 5.5f);
 		}
 	}
 
 	if (cyclepos > cyclelen)
 	{
-		cyclepos = fmod(cyclepos, cyclelen);	
+		cyclepos = fmod(cyclepos, cyclelen);
 
-		memcpy(&mobiles[1], mobiles, sizeof(void*)*(mobilesOnBelt-1));
-		if(robot1->attached)
+		memcpy(&mobiles[1], mobiles, sizeof(void*)*(mobilesOnBelt - 1));
+		if (robot1->attached)
 		{
 			mobiles[0] = dynamic_cast<Mobile*>(robot1->attached);
 			robot1->attached = nullptr;

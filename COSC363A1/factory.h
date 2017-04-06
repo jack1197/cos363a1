@@ -30,8 +30,8 @@ class Factory :
 	Mobile *mobiles2[mobilesOnBelt2];
 	float cyclepos = 0.0f;
 	float cyclelen = 5.0f;
-	float robotOffsets[6] = {-0.2f, -0.34f, -0.2f, -0.45f, -0.4f, -0.45f};
-	float robotOffsets2[3] = {-0.15f, -0.2f, -0.35f};
+	float robotOffsets[6] = { -0.2f, -0.34f, -0.2f, -0.45f, -0.4f, -0.45f };
+	float robotOffsets2[3] = { -0.15f, -0.2f, -0.35f };
 	float colorMins[8][4] = {
 		{0.f, 0.f,0.f,1.f},
 		{0},
