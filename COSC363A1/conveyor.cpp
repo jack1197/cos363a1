@@ -11,7 +11,6 @@ Conveyor::~Conveyor()
 
 void Conveyor::Process(float dt)
 {
-	float cyclesPerSec = 2.f;
 	if (cyclesPerSec > 0)
 	{
 		cycleProgress = float(fmod(cycleProgress + cyclesPerSec * dt, 1));

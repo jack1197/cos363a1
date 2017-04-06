@@ -6,6 +6,8 @@ Factory::Factory()
 	floorTex = new Texture("TexturesCom_ConcreteBare0433_11_seamless_S.tga", "TGA");
 	wallTex = new Texture("TexturesCom_BrickSmallBrown0270_1_seamless_S.tga", "TGA");
 	conveyor = new Conveyor();
+	conveyor2 = new Conveyor();
+	conveyor2->cyclesPerSec = 1.f;
 	float armLengths = 7;
 	robot1 = new Robot(armLengths, armLengths);
 	robot2 = new Robot(armLengths, armLengths);
@@ -86,7 +88,7 @@ void Factory::Render()
 	glPushMatrix();
 	glTranslatef(-8.5, 0, -12);
 	glRotatef(-90, 0 ,1,0);
-	conveyor->Render();
+	conveyor2->Render();
 	glPopMatrix();
 
 	glPushMatrix();
@@ -99,7 +101,7 @@ void Factory::Render()
 		glTranslatef(-28+14*i, 6.00f-robotOffsets[i], negated * 5.5f);
 		botsList[i]->Render();
 		glPopMatrix();
-		if(i!=2)
+		if(i!=1)
 		{
 		glPushMatrix();
 		glColor3f(165./255., 136./255., 85./255.);
@@ -119,7 +121,17 @@ void Factory::Render()
 		mobiles[i]->Render();
 		glPopMatrix();
 	}
-
+	glPushMatrix();
+	glTranslatef(-8.5, 0, -12);
+	glRotatef(-90, 0, 1, 0);
+	for (int i = 0; i<mobilesOnBelt2; i++)
+	{
+		glPushMatrix();
+		glTranslatef(-28.0f+i*6+cyclepos*1.2f, 6.0f, 0);
+		mobiles[i]->Render();
+		glPopMatrix();
+	}
+	glPopMatrix();
 	glPopMatrix();
 
 }
@@ -127,6 +139,7 @@ void Factory::Render()
 void Factory::Process(float dt)
 {
 	conveyor->Process(dt);
+	conveyor2->Process(dt);
 
 	robot1->Process(dt);
 	robot2->Process(dt);
