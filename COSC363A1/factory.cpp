@@ -92,15 +92,15 @@ void Factory::Render()
 {
 	{
 		//heat lamp/solder oven
-		float lightpos[4] = { -24.5 + 3.f* sin(cyclepos/cyclelen*4*PI), 12, -2, 1.0f };
-		float lightspec[4] = { 2.f, 0.8f, 0.4f, 1.f };
-		float lightdiff[4] = { 2.f, 0.4f, 0.4f, 1.0f };
+		float lightpos[4] = { -24.5 + 3.f* sin(cyclepos/cyclelen*4*PI), 12, -3, 1.0f };
+		float lightspec[4] = { 1.f, 0.4f, 0.2f, 1.f };
+		float lightdiff[4] = { 1.f, 0.4f, 0.2f, 1.0f };
 		float spotdir[3] = { 0.f, -4.f, 0.f };
 		glLightfv(GL_LIGHT4, GL_POSITION, lightpos);
 		glLightfv(GL_LIGHT4, GL_SPECULAR, lightspec);
 		glLightfv(GL_LIGHT4, GL_DIFFUSE, lightdiff);
 		glLightfv(GL_LIGHT4, GL_SPOT_DIRECTION, spotdir);
-		glLightf(GL_LIGHT4, GL_SPOT_CUTOFF, 30);
+		glLightf(GL_LIGHT4, GL_SPOT_CUTOFF, 25);
 		glLightf(GL_LIGHT4, GL_SPOT_EXPONENT, 3);
 
 		glPushMatrix();
@@ -118,7 +118,7 @@ void Factory::Render()
 		glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour2);
 		glMaterialf(GL_FRONT, GL_SHININESS, 5);
 		glPushMatrix();
-		glTranslatef(-24.5, 14, -2);
+		glTranslatef(-24.5, 14, -3);
 		glPushMatrix();
 		glScalef(10,1,2);
 		glutSolidCube(1);
@@ -181,6 +181,7 @@ void Factory::Render()
 
 	//main robots
 
+	glDisable(GL_LIGHT4);
 	glPushMatrix();
 	glTranslatef(-5, 0, 10);
 	Robot *botsList[] = { robot1, robot2, robot3, robot4, robot5, robot6 };
@@ -200,6 +201,7 @@ void Factory::Render()
 			glPopMatrix();
 		}
 	}
+	glEnable(GL_LIGHT4);
 	//main mobiles
 
 	for (int i = 0; i < mobilesOnBelt; i++)
@@ -228,6 +230,7 @@ void Factory::Render()
 	glPopMatrix();
 
 	//aux robots
+	glDisable(GL_LIGHT4);
 	glPushMatrix();
 	glTranslatef(-24.5, 0, 2.5);
 	glRotatef(-90, 0, 1, 0);
@@ -246,6 +249,7 @@ void Factory::Render()
 		glPopMatrix();
 	}
 	glPopMatrix();
+	glEnable(GL_LIGHT4);
 
 }
 
@@ -536,11 +540,11 @@ void Factory::brickWall(int subdivisions, int repetitions)
 
 void Factory::concreteFloor(int subdivisions, int repetitions)
 {
-	float spec_colour[3] = { .6f, .6f, .6f };
+	float spec_colour[3] = { .1f, .1f, .1f };
 	glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
 	glMaterialf(GL_FRONT, GL_SHININESS, 2);
 	floorTex->bind();
-	glColor3f(1.f, 1.f, 1.f);
+	glColor3f(0.9f, 0.9f, 0.9f);
 	glEnable(GL_TEXTURE_2D);
 	subdividedSurface(subdivisions, repetitions, 1);
 	glDisable(GL_TEXTURE_2D);

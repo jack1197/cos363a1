@@ -18,7 +18,7 @@ void Robot::Render()
 {
 
 	float height = 0.f;
-	float base = 40.0f;
+	float base = 7.0f;
 	float sidelength = 5.0f;
 	float baseCylHeight = 1.f;
 	GLUquadric *quadObj = gluNewQuadric();
