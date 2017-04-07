@@ -127,6 +127,9 @@
     <Image Include="TexturesCom_BrickSmallBrown0270_1_seamless_S.tga">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="TexturesCom_CardboardPlain0008_1_seamless_S.tga">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="screen.obj">

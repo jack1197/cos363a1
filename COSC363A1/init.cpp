@@ -22,11 +22,11 @@ void initialize()
 	glEnable(GL_CULL_FACE);
 	glutSetKeyRepeat(GLUT_KEY_REPEAT_OFF);
 	glEnable(GL_CULL_FACE);
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	camSetPos(-10.f, 40.f, 40.f);
-	camSetAngle(10, -40, 1, 0);
+	camSetPos(-5.f, 5.f, 5.f);
+	camSetAngle(45, -40, 1, 0);
 	camTargeted(false);
 
 	Factory *fact = new Factory();

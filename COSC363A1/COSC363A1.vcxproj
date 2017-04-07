@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="TexturesCom_BrickSmallBrown0270_1_seamless_S.tga" />
+    <Image Include="TexturesCom_CardboardPlain0008_1_seamless_S.tga" />
     <Image Include="TexturesCom_ConcreteBare0433_11_seamless_S.tga" />
   </ItemGroup>
   <ItemGroup>

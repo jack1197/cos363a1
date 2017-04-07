@@ -13,7 +13,7 @@ class Factory :
 	Texture *floorTex, *wallTex;
 	Conveyor *conveyor;
 	Conveyor *conveyor2;
-	PartBox *testBox;
+	PartBox *box1;
 	Robot *robot1;
 	Robot *robot2;
 	Robot *robot3;
