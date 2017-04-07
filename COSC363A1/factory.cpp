@@ -229,7 +229,7 @@ void Factory::Process(float dt)
 
 	for (int i = 0; i < 5; i++)
 	{
-		float adjustedCyclepos = fmod(cyclepos + timeOffsets*(6 - i) + (i == 0 ? 0.1f : 0.f), cyclelen);
+		float adjustedCyclepos = fmod(cyclepos + timeOffsets*(6 - i), cyclelen);
 		float negated = i % 2 ? -1 : 1;
 		if (adjustedCyclepos < 1.8)
 		{
@@ -360,11 +360,11 @@ void Factory::Process(float dt)
 		float adjustedCyclepos = fmod(cyclepos + 0.833333f, cyclelen);
 		if (adjustedCyclepos < 1.8)
 		{
-			robot6->setPos(0, 1, -5.5f);
+			robot6->setPos(0, 1, -6.5f);
 		}
 		else if (adjustedCyclepos < 2.5)
 		{
-			robot6->setPos(0, -3, -5.5f);
+			robot6->setPos(0, -3, -7.5f);
 		}
 		else if (adjustedCyclepos < 3.0)
 		{
@@ -373,7 +373,7 @@ void Factory::Process(float dt)
 				delete robot6->attached;
 				robot6->attached = nullptr;
 			}
-			robot6->setPos(0, 1, -5.5f);
+			robot6->setPos(0, 1, -7.5f);
 		}
 		else if (adjustedCyclepos < 4.85f)
 		{
