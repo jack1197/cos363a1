@@ -9,6 +9,9 @@ Factory::Factory()
 	wallTex = new Texture("TexturesCom_BrickSmallBrown0270_1_seamless_S.tga", "TGA");
 	conveyor = new Conveyor();
 	conveyor2 = new Conveyor();
+
+	testBox = new PartBox();
+
 	conveyor2->cyclesPerSec = 1.f;
 	float armLengths = 7;
 	robot1 = new Robot(armLengths, armLengths);
@@ -86,6 +89,7 @@ Factory::~Factory()
 
 void Factory::Render()
 {
+	testBox->Render();
 	//floor
 	glPushMatrix();
 	glScalef(100, 1, 100);

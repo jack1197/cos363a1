@@ -4,6 +4,7 @@
 #include "conveyor.h"
 #include "robot.h"
 #include "Mobile.h"
+#include "part_box.h"
 #include <random>
 
 class Factory :
@@ -12,6 +13,7 @@ class Factory :
 	Texture *floorTex, *wallTex;
 	Conveyor *conveyor;
 	Conveyor *conveyor2;
+	PartBox *testBox;
 	Robot *robot1;
 	Robot *robot2;
 	Robot *robot3;

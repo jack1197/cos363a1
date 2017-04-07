@@ -63,6 +63,9 @@
     <ClCompile Include="mobile.cpp">
       <Filter>Source Files\MyObjects</Filter>
     </ClCompile>
+    <ClCompile Include="part_box.cpp">
+      <Filter>Source Files\MyObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h">
@@ -111,6 +114,9 @@
       <Filter>Header Files\MyObjects</Filter>
     </ClInclude>
     <ClInclude Include="mobile.h">
+      <Filter>Header Files\MyObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="part_box.h">
       <Filter>Header Files\MyObjects</Filter>
     </ClInclude>
   </ItemGroup>
