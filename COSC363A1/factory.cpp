@@ -169,12 +169,12 @@ void Factory::Render()
 
 	//aux mobiles
 	glPushMatrix();
-	glTranslatef(-24.5, 0, 3);
+	glTranslatef(-24.5, 0, 0);
 	glRotatef(-90, 0, 1, 0);
 	for (int i = 0; i < mobilesOnBelt2; i++)
 	{
 		glPushMatrix();
-		glTranslatef(-28.5f + i * 6 + fmod((cyclepos + 1.85f), cyclelen)*1.2f, 6.0f, 0);
+		glTranslatef(-25.5f + i * 6 + fmod((cyclepos + 1.85f), cyclelen)*1.2f, 6.0f, 0);
 		mobiles2[i]->Render();
 		glPopMatrix();
 	}
@@ -343,6 +343,10 @@ void Factory::Process(float dt)
 			{
 				mobiles2[0] = dynamic_cast<Mobile*>(robotb1->attached);
 				robotb1->attached = nullptr;
+				if(camEnabled && !camStarted)
+				{
+					camStarted = true;
+				}
 			}
 			else
 			{
@@ -409,15 +413,60 @@ void Factory::CameraManage(float dt)
 {
 	if(isKeyDown('2'))
 	{
+		if(!camEnabled)
+		{
 		myTiming::freeLook = false;
 		camEnabled = true;
+			camSetTarget(-24.5, 7, -25.5, 1, 0);
+			camSetPos(-29, 20, -28, 1, 0);
+		camTargeted(true);
+		}
 	}
 	if(isKeyDown('1'))
 	{
 		myTiming::freeLook = true;
 		camEnabled = false;
-		camstarted = false;
+		camStarted = false;
+		camTargeted(false);
 		camCycleTime = 0.0f;
+	}
+	if(camStarted)
+	{
+		camCycleTime += dt;
+		if(camCycleTime<(cyclelen*5))
+		{
+			camSetTarget(-24.5, 7, -25.5 + 1.2f *camCycleTime, 1, 0);
+			camSetPos(-29, 20, -28 + 1.2f *camCycleTime, 1, 0);
+		}
+		else if(camCycleTime<(cyclelen*5+2.7))
+		{
+
+		}
+		else if(camCycleTime<(cyclelen*10+1))
+		{
+
+			float offsetTime = camCycleTime - (cyclelen*5+2.7);
+			camSetTarget(-19 + 2.4f * offsetTime, 7, 10, 1, 0);
+			camSetPos(-24 + 2.8f * offsetTime, 20, 17, 1, 0);
+		}
+		else if(camCycleTime<(cyclelen*10+1.5));
+		else if(camCycleTime<(cyclelen*10+3))
+		{
+			camSetTarget(37, 5, -3, 1, 0);
+			camSetPos(33, 15, -15, 1, 0);
+		}
+		else if(camCycleTime<(cyclelen*12 + 3))
+		{
+			float transitionProp = (cos(PI + PI*(camCycleTime - (cyclelen*10 + 3))/(cyclelen*2))+1)/2 ;
+			float inverseProp = 1 - transitionProp;
+			camSetTarget(37*inverseProp, 5, -3 * inverseProp, 1, 0);
+			camSetPos(33*inverseProp + 35*transitionProp, 15*inverseProp + 40 * transitionProp, -15 * inverseProp -40*transitionProp, 1, 0);
+		}
+		else
+		{
+			camSetTarget(0, 5,0, 1, 0);
+			camSetPos(35, 40, -40, 1, 0);
+		}
 	}
 }
 

@@ -57,7 +57,7 @@ class Factory :
 	std::default_random_engine generator;
 	std::uniform_real_distribution<float> randomDist = std::uniform_real_distribution<float>(0.0, 1.0);
 	bool camEnabled = false;
-	bool camstarted = false;
+	bool camStarted = false;
 	float camCycleTime = 0.0f;
 
 public:
