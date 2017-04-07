@@ -1,7 +1,8 @@
 #include "factory.h"
 #include "common.h"
 #include "camera.h"
-
+#include "keyboard.h"
+#include "timing.h"
 
 Factory::Factory()
 {
@@ -399,6 +400,24 @@ void Factory::Process(float dt)
 		{
 			mobiles[0] = new Mobile(Mobile::state(0));
 		}
+	}
+
+	CameraManage(dt);
+}
+
+void Factory::CameraManage(float dt)
+{
+	if(isKeyDown('2'))
+	{
+		myTiming::freeLook = false;
+		camEnabled = true;
+	}
+	if(isKeyDown('1'))
+	{
+		myTiming::freeLook = true;
+		camEnabled = false;
+		camstarted = false;
+		camCycleTime = 0.0f;
 	}
 }
 

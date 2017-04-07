@@ -56,12 +56,15 @@ class Factory :
 	};
 	std::default_random_engine generator;
 	std::uniform_real_distribution<float> randomDist = std::uniform_real_distribution<float>(0.0, 1.0);
-
+	bool camEnabled = false;
+	bool camstarted = false;
+	float camCycleTime = 0.0f;
 
 public:
 	Factory();
 	~Factory();
 	virtual void Render();
 	virtual void Process(float dt);
+	void CameraManage(float dt);
 };
 

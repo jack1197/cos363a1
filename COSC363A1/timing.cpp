@@ -11,6 +11,7 @@ namespace myTiming
 	high_resolution_clock::time_point last;
 	high_resolution_clock::time_point start;
 	float timeFactor = 1;
+	bool freeLook = true;
 }
 
 void timerInit()
@@ -41,7 +42,8 @@ void cameraProcesses(float dt)
 	const float degPerSec = 50;
 	const float unitPerSec = 20;
 
-
+	if (myTiming::freeLook)
+	{
 	float direction[3];
 	camGetDirection(direction);
 	float angles[2];
@@ -110,6 +112,7 @@ void cameraProcesses(float dt)
 		multiplied[2] = float(-cos(angles[0] / 180.f*PI) * sin(angles[1] / 180.f*PI)) * unitPerSec * dt;
 		multiplied[1] = float(-cos(angles[1] / 180.f*PI)) * unitPerSec * dt;
 		camSetPos(multiplied, 1, 1);
+	}
 	}
 	if (isKeyDown('+'))
 	{
