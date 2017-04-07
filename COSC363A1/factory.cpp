@@ -415,20 +415,25 @@ void Factory::CameraManage(float dt)
 	{
 		if(!camEnabled)
 		{
+		camGetPos(prevPosition);
 		myTiming::freeLook = false;
 		camEnabled = true;
-			camSetTarget(-24.5, 7, -25.5, 1, 0);
-			camSetPos(-29, 20, -28, 1, 0);
+		camSetTarget(-24.5, 7, -25.5, 1, 0);
+		camSetPos(-29, 20, -28, 1, 0);
 		camTargeted(true);
 		}
 	}
 	if(isKeyDown('1'))
 	{
+		if(camEnabled)
+		{
 		myTiming::freeLook = true;
 		camEnabled = false;
 		camStarted = false;
 		camTargeted(false);
 		camCycleTime = 0.0f;
+		camSetPos(prevPosition);
+		}
 	}
 	if(camStarted)
 	{

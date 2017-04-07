@@ -59,6 +59,7 @@ class Factory :
 	bool camEnabled = false;
 	bool camStarted = false;
 	float camCycleTime = 0.0f;
+	float prevPosition[3]  ={0.f, 0.f, 0.f};
 
 public:
 	Factory();
