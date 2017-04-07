@@ -90,6 +90,53 @@ Factory::~Factory()
 
 void Factory::Render()
 {
+	{
+		//heat lamp/solder oven
+		float lightpos[4] = { -24.5 + 3.f* sin(cyclepos/cyclelen*4*PI), 12, -2, 1.0f };
+		float lightspec[4] = { 2.f, 0.8f, 0.4f, 1.f };
+		float lightdiff[4] = { 2.f, 0.4f, 0.4f, 1.0f };
+		float spotdir[3] = { 0.f, -4.f, 0.f };
+		glLightfv(GL_LIGHT4, GL_POSITION, lightpos);
+		glLightfv(GL_LIGHT4, GL_SPECULAR, lightspec);
+		glLightfv(GL_LIGHT4, GL_DIFFUSE, lightdiff);
+		glLightfv(GL_LIGHT4, GL_SPOT_DIRECTION, spotdir);
+		glLightf(GL_LIGHT4, GL_SPOT_CUTOFF, 30);
+		glLightf(GL_LIGHT4, GL_SPOT_EXPONENT, 3);
+
+		glPushMatrix();
+		glColor3f(2.0f, .8f, .4f);
+		float spec_colour[3] = { 0.f,0.f,0.f };
+		glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
+		glMaterialf(GL_FRONT, GL_SHININESS, 5);
+		glTranslatef(lightpos[0], lightpos[1], lightpos[2]);
+		glRotatef(-90,1,0,0);
+		glutSolidCone(1, 2, 10,10);
+		glPopMatrix();
+
+		glColor3f(1.0f, .8f, .8f);
+		float spec_colour2[3] = {1.f,0.8f,0.8f };
+		glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour2);
+		glMaterialf(GL_FRONT, GL_SHININESS, 5);
+		glPushMatrix();
+		glTranslatef(-24.5, 14, -2);
+		glPushMatrix();
+		glScalef(10,1,2);
+		glutSolidCube(1);
+		glPopMatrix();
+		glPushMatrix();
+		glTranslatef(4.5,-7.5,0);
+		glScalef(1,14,2);
+		glutSolidCube(1);
+		glPopMatrix();
+		glPushMatrix();
+
+		glTranslatef(-4.5,-7.5,0);
+		glScalef(1,14,2);
+		glutSolidCube(1);
+		glPopMatrix();
+		glPopMatrix();
+	}
+
 	//floor
 	glPushMatrix();
 	glScalef(100, 1, 100);
