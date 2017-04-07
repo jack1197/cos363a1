@@ -114,19 +114,19 @@ void Factory::Render()
 
 	//main belt 1
 	glPushMatrix();
-	glTranslatef(27.5f, 0, 10);
+	glTranslatef(22.5f, 0, 10);
 	conveyor->Render();
 	glPopMatrix();
 
 	//main belt 2
 	glPushMatrix();
-	glTranslatef(-11, 0, 10);
+	glTranslatef(-16, 0, 10);
 	conveyor->Render();
 	glPopMatrix();
 
 	//aux belt 1
 	glPushMatrix();
-	glTranslatef(-19.5, 0, -12);
+	glTranslatef(-24.5, 0, -12);
 	glRotatef(-90, 0, 1, 0);
 	conveyor2->Render();
 	glPopMatrix();
@@ -134,7 +134,7 @@ void Factory::Render()
 	//main robots
 
 	glPushMatrix();
-	glTranslatef(0, 0, 10);
+	glTranslatef(-5, 0, 10);
 	Robot *botsList[] = { robot1, robot2, robot3, robot4, robot5, robot6 };
 	for (int i = 0; i < 6; i++)
 	{
@@ -168,7 +168,7 @@ void Factory::Render()
 
 	//aux mobiles
 	glPushMatrix();
-	glTranslatef(-19.5, 0, 3);
+	glTranslatef(-24.5, 0, 3);
 	glRotatef(-90, 0, 1, 0);
 	for (int i = 0; i < mobilesOnBelt2; i++)
 	{
@@ -181,7 +181,7 @@ void Factory::Render()
 
 	//aux robots
 	glPushMatrix();
-	glTranslatef(-19.5, 0, 2.5);
+	glTranslatef(-24.5, 0, 2.5);
 	glRotatef(-90, 0, 1, 0);
 	Robot *botsList2[] = { robotb1, robotb2, robotb3 };
 	for (int i = 0; i < 3; i++)
