@@ -146,13 +146,9 @@ void Factory::Render()
 		if (i != 1)
 		{
 			glPushMatrix();
-			glColor3f(165. / 255., 136. / 255., 85. / 255.);
-			float spec_colour[3] = { 165. / 255. / 4., 136. / 255. / 4., 85. / 255. / 4. };
-			glMaterialfv(GL_FRONT, GL_SPECULAR, spec_colour);
-			glMaterialf(GL_FRONT, GL_SHININESS, 2);
-			glTranslatef(-28 + 14 * i, 2.5f, negated * 11.0f);
-			glScalef(2, 1, 1);
-			glutSolidCube(5);
+		glTranslatef(-28 + 14 * i, 0.f, negated * 13.0f);
+		glScalef(10, 5, 5);
+		box1->Render();
 			glPopMatrix();
 		}
 	}
@@ -196,7 +192,7 @@ void Factory::Render()
 		botsList2[i]->Render();
 		glPopMatrix();
 		glPushMatrix();
-		glTranslatef(-28 + 7 * i, 0.f, negated * 11.0f);
+		glTranslatef(-28 + 7 * i, 0.f, negated * 13.0f);
 		glScalef(5, 5, 5);
 		box1->Render();
 		glPopMatrix();
@@ -246,14 +242,14 @@ void Factory::Process(float dt)
 				delete oldmobile;
 			}
 			if (i != 1)
-				botsList[i]->setPos(0, 1, negated * 5.5f);
+				botsList[i]->setPos(0, 1, negated * 6.5f);
 			else
-				botsList[i]->setPos(-5.5f, 1, 0);
+				botsList[i]->setPos(-5.5f, 1.5, 0);
 		}
 		else if (adjustedCyclepos > 1.8 && adjustedCyclepos < 2.3)
 		{
 			if (i != 1)
-				botsList[i]->setPos(0, -3, negated * 5.5f);
+				botsList[i]->setPos(0, -3, negated * 7.5f);
 			else
 				botsList[i]->setPos(-5.5f, 0, 0);
 		}
@@ -270,7 +266,7 @@ void Factory::Process(float dt)
 				}
 			}
 			if (i != 1)
-				botsList[i]->setPos(0, 1, negated * 5.5f);
+				botsList[i]->setPos(0, 1, negated * 7.5f);
 			else
 				botsList[i]->setPos(-5.5f, 1, 0);
 		}
@@ -304,11 +300,11 @@ void Factory::Process(float dt)
 				botsList2[i]->attached = nullptr;
 				delete oldmobile;
 			}
-			botsList2[i]->setPos(0, 1, negated * 5.5f);
+			botsList2[i]->setPos(0, 1.5, negated * 6.5f);
 		}
 		else if (adjustedCyclepos > 1.8 && adjustedCyclepos < 2.3)
 		{
-			botsList2[i]->setPos(0, -3, negated * 5.5f);
+			botsList2[i]->setPos(0, -3, negated * 7.5f);
 		}
 		else if (adjustedCyclepos > 2.3 && adjustedCyclepos < 2.8)
 		{
@@ -323,7 +319,7 @@ void Factory::Process(float dt)
 				}
 
 			}
-			botsList2[i]->setPos(0, 1, negated * 5.5f);
+			botsList2[i]->setPos(0, 1, negated * 7.5f);
 		}
 		else if (adjustedCyclepos > 2.8 && adjustedCyclepos < 4.85)
 		{

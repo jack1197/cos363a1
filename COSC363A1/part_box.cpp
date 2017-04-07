@@ -95,7 +95,7 @@ void PartBox::Render()
 	{
 		glPushMatrix();
 		glTranslatef(-0.5, 0.7 + j*0.03333, -0.5);
-		glScalef(0.999, 1, 0.999);
+		glScalef(0.995, 1, 0.995);
 		glBegin(GL_TRIANGLES);
 		glColor4f(0.f, 0.f, 0.f, 1.0f - 0.1f*j);
 		for (int i = 0; i < 4; i++)
