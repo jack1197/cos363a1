@@ -389,7 +389,7 @@ void Factory::Process(float dt)
 		if (!robot2->attached)
 		{
 			robot2->attached = mobiles2[mobilesOnBelt2 - 1];
-			memcpy(&mobiles2[1], mobiles2, sizeof(void*)*(mobilesOnBelt2 - 1));
+			memmove(&mobiles2[1], mobiles2, sizeof(void*)*(mobilesOnBelt2 - 1));
 			if (robotb1->attached)
 			{
 				mobiles2[0] = dynamic_cast<Mobile*>(robotb1->attached);
@@ -445,7 +445,7 @@ void Factory::Process(float dt)
 	{
 		cyclepos = fmod(cyclepos, cyclelen);
 
-		memcpy(&mobiles[1], mobiles, sizeof(void*)*(mobilesOnBelt - 1));
+		memmove(&mobiles[1], mobiles, sizeof(void*)*(mobilesOnBelt - 1));
 		if (robot1->attached)
 		{
 			mobiles[0] = dynamic_cast<Mobile*>(robot1->attached);
